@@ -1,0 +1,11 @@
+{
+    "require" : {
+        "symfony/console" : "~3.0",
+        "nesbot/carbon": "~1.14"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Acme\\" : "src"
+        }
+    }
+}
