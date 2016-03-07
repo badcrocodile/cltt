@@ -35,6 +35,10 @@ class ShowTimes extends Command
 
         $times = $this->database->selectWhere("SELECT start_time, stop_time FROM entries WHERE project_id = $project ORDER BY start_time ASC");
 
+        echo $something = FormatTime::saySomething("Drupal was hard too. \n");
+        echo $sometime  = ComputeTime::computeSomething("BUT IT GETS EASIER. \n");
+
+
         /**
          * @param $stop
          * @param $start
