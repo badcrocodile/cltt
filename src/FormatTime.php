@@ -4,8 +4,7 @@
 
 use Carbon\Carbon;
 
-class FormatTime
-{
+class FormatTime {
     /**
      * @param $seconds
      * @return string

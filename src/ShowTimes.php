@@ -33,17 +33,24 @@ class ShowTimes extends Command
 
         $project = $input->getArgument('project');
 
-        $times = $this->database->selectWhere("SELECT start_time, stop_time FROM entries WHERE project_id = $project ORDER BY start_time ASC");
+        $result_times = $this->database->selectWhere("SELECT start_time, stop_time FROM entries WHERE project_id = $project ORDER BY start_time ASC");
 
-        $session = ComputeTime::compute_session_length($times);
+        $times = new CalculateTime($result_times);
+        $something = $times->dosomething("lalala");
+        echo $something . "\n";
 
-        $project_total_seconds = ComputeTime::compute_project_total_seconds($times);
+        $session = ComputeTime::compute_session_length($result_times);
+
+        $test = $times->compute_session_length();
+        var_dump($test);
+
+        $project_total_seconds = ComputeTime::compute_project_total_seconds($result_times);
 
         $project_total_formatted = FormatTime::format_project_total($project_total_seconds);
 
         $table = new Table($output);
 
-        $table->setHeaders(['Date', 'Start Time', 'Stop Time', 'Total'])->setRows($session)->render();
+        $table->setHeaders(['Date', 'Start Time', 'Stop Time', 'Session Length'])->setRows($session)->render();
 
         $output->writeln("<info>Project Totals: $project_total_formatted</info>");
 

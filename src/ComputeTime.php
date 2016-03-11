@@ -4,8 +4,7 @@
 
 use Carbon\Carbon;
 
-class ComputeTime
-{
+class ComputeTime {
     /**
      * @param $stop
      * @param $start
