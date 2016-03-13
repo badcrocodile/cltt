@@ -3,13 +3,26 @@
 
 use PDO;
 
-class DatabaseAdapter
-{
+class DatabaseAdapter {
     protected $connection;
+    protected $row;
 
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
+    }
+
+    public function query($sql, $parameters)
+    {
+        return $this->connection->prepare($sql)->execute($parameters);
+    }
+
+    public function fetchFirstRow($sql, $key)
+    {
+        $rows = $this->connection->prepare($sql);
+        $rows->execute();
+
+        return $this->row = $rows->fetch()["$key"];
     }
 
     public function fetchAll($tableName)
@@ -20,10 +33,5 @@ class DatabaseAdapter
     public function selectWhere($sql)
     {
         return $this->connection->query($sql)->fetchAll();
-    }
-
-    public function query($sql, $parameters)
-    {
-        return $this->connection->prepare($sql)->execute($parameters);
     }
 }

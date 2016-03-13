@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef712de7-bcab-4c4e-b9f8-f9ebfe139609" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CalculateTime.php" afterPath="$PROJECT_DIR$/src/Session.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ComputeTime.php" afterPath="$PROJECT_DIR$/src/CalculateTime.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ComputeTime.php" afterPath="$PROJECT_DIR$/src/ComputeTime.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite" afterPath="$PROJECT_DIR$/db.sqlite" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AddProject.php" afterPath="$PROJECT_DIR$/src/AddProject.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Command.php" afterPath="$PROJECT_DIR$/src/Command.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DatabaseAdapter.php" afterPath="$PROJECT_DIR$/src/DatabaseAdapter.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FormatTime.php" afterPath="$PROJECT_DIR$/src/FormatTime.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShowTimes.php" afterPath="$PROJECT_DIR$/src/ShowTimes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StartProject.php" afterPath="$PROJECT_DIR$/src/StartProject.php" />
     </list>
     <ignored path="klok.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,6 +42,10 @@
         <option name="myItemId" value="Sqlite (Xerial) - db.sqlite" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="projects" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
     <PATH>
       <PATH_ELEMENT>
@@ -58,34 +68,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="projects" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projects">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PDO.php" pinned="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/PDO.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="742" column="20" selection-start-line="742" selection-start-column="20" selection-end-line="742" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StartProject.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StartProject.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="26" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="26" />
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#24#74#0#PHP" expanded="false" />
-                <marker date="1457241002596" expanded="true" signature="1002:1076" placeholder="insert into entries... " />
+                <marker date="1457661236943" expanded="true" signature="1003:1077" placeholder="insert into entries... " />
               </folding>
             </state>
           </provider>
@@ -95,10 +85,8 @@
         <entry file="file://$PROJECT_DIR$/src/Command.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-              <folding>
-                <element signature="e#24#88#0#PHP" expanded="false" />
-              </folding>
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,10 +95,10 @@
         <entry file="file://$PROJECT_DIR$/src/AddProject.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#24#74#0#PHP" expanded="false" />
-                <marker date="1456972823114" expanded="true" signature="630:673" placeholder="insert into projects... " />
+                <marker date="1457661236946" expanded="true" signature="631:674" placeholder="insert into projects... " />
               </folding>
             </state>
           </provider>
@@ -120,10 +108,20 @@
         <entry file="file://$PROJECT_DIR$/src/DatabaseAdapter.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+              <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
               <folding>
-                <marker date="1457221143550" expanded="true" signature="277:291" placeholder="select * fro... ${$tableName}" />
+                <marker date="1457889032120" expanded="true" signature="614:628" placeholder="select * fro... ${$tableName}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Command.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Command/Command.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="410" column="20" selection-start-line="410" selection-start-column="20" selection-end-line="410" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,13 +130,39 @@
         <entry file="file://$PROJECT_DIR$/src/ShowTimes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+              <caret line="33" column="100" selection-start-line="33" selection-start-column="100" selection-end-line="33" selection-end-column="100" />
               <folding>
-                <marker date="1457659698584" expanded="true" signature="1107:1162" placeholder="select start... entries" />
-                <marker date="1457659698584" expanded="true" signature="1107:1170" placeholder="select * fro... entries" />
-                <marker date="1457659698584" expanded="true" signature="1107:1194" placeholder="select start... entries" />
-                <marker date="1457659698584" expanded="true" signature="1107:1195" placeholder="select * fro... entries" />
+                <marker date="1457889349337" expanded="true" signature="740:795" placeholder="select start... entries" />
+                <marker date="1457889349337" expanded="true" signature="740:796" placeholder="select * fro... entries" />
+                <marker date="1457889349337" expanded="true" signature="740:830" placeholder="select start... entries" />
+                <marker date="1457889349337" expanded="true" signature="740:831" placeholder="select * fro... entries" />
+                <marker date="1457889349337" expanded="true" signature="891:925" placeholder="SELECT name projects" />
+                <marker date="1457889349337" expanded="true" signature="891:928" placeholder="SELECT name projects" />
+                <marker date="1457889349337" expanded="true" signature="891:947" placeholder="SELECT name projects" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowWeek.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ShowWeek.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1457889349000" expanded="true" signature="734:830" placeholder="SELECT start... entries" />
+                <marker date="1457889349000" expanded="true" signature="891:947" placeholder="SELECT name projects" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Session.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Session.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="106" selection-start-line="30" selection-start-column="106" selection-end-line="30" selection-end-column="106" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,28 +171,27 @@
         <entry file="file://$PROJECT_DIR$/src/CalculateTime.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-              <folding />
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+              <folding>
+                <element signature="e#71#142#0#PHP" expanded="false" />
+                <element signature="e#276#334#0#PHP" expanded="false" />
+                <element signature="e#1229#1287#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputeTime.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ComputeTime.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormatTime.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormatTime.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FormatTime.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2811861">
-              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="50" column="68" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="68" />
+              <folding>
+                <element signature="e#68#124#0#PHP" expanded="false" />
+                <element signature="e#295#351#0#PHP" expanded="false" />
+                <element signature="e#480#574#0#PHP" expanded="false" />
+                <element signature="e#1260#1329#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,21 +208,22 @@
         <option value="$PROJECT_DIR$/src/ShowProject.php" />
         <option value="$PROJECT_DIR$/klok" />
         <option value="$PROJECT_DIR$/src/ArchiveProject.php" />
-        <option value="$PROJECT_DIR$/src/AddProject.php" />
         <option value="$PROJECT_DIR$/src/ShowTime.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/src/DatabaseAdapter.php" />
         <option value="$PROJECT_DIR$/src/StopProject.php" />
-        <option value="$PROJECT_DIR$/src/StartProject.php" />
-        <option value="$PROJECT_DIR$/src/Command.php" />
         <option value="dbtable:/7407903a/243c3189-95c0-4f39-8e37-8430d3dc543e/entries" />
         <option value="$PROJECT_DIR$/src/FormatsTime.php" />
         <option value="$PROJECT_DIR$/src/ComputesTime.php" />
         <option value="$PROJECT_DIR$/projects" />
-        <option value="$PROJECT_DIR$/src/ShowTimes.php" />
-        <option value="$PROJECT_DIR$/src/CalculateTime.php" />
-        <option value="$PROJECT_DIR$/src/ComputeTime.php" />
         <option value="$PROJECT_DIR$/src/FormatTime.php" />
+        <option value="$PROJECT_DIR$/src/AddProject.php" />
+        <option value="$PROJECT_DIR$/src/StartProject.php" />
+        <option value="$PROJECT_DIR$/src/ComputeTime.php" />
+        <option value="$PROJECT_DIR$/src/CalculateTime.php" />
+        <option value="$PROJECT_DIR$/src/Session.php" />
+        <option value="$PROJECT_DIR$/src/Command.php" />
+        <option value="$PROJECT_DIR$/src/DatabaseAdapter.php" />
+        <option value="$PROJECT_DIR$/src/ShowTimes.php" />
       </list>
     </option>
   </component>
@@ -225,7 +249,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -244,6 +268,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -272,13 +297,92 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="console" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="console" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Command" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="klok" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,10 +472,11 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10208333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1609375" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14635417" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14635417" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934132" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934132" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -383,7 +488,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -427,25 +531,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/projects">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StartProject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="50" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="e#24#74#0#PHP" expanded="false" />
-            <marker date="1457241002596" expanded="true" signature="1002:1076" placeholder="insert into entries... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StopProject.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -464,9 +549,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#88#0#PHP" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -475,10 +558,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1457659698584" expanded="true" signature="1107:1162" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1170" placeholder="select * fro... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1194" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1195" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:795" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:796" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:830" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:831" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="891:925" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:928" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:947" placeholder="SELECT name projects" />
           </folding>
         </state>
       </provider>
@@ -502,7 +588,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
           <folding>
-            <marker date="1457221143550" expanded="true" signature="277:291" placeholder="select * fro... ${$tableName}" />
+            <marker date="1457889032120" expanded="true" signature="614:628" placeholder="select * fro... ${$tableName}" />
           </folding>
         </state>
       </provider>
@@ -521,7 +607,7 @@
           <caret line="19" column="50" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="50" />
           <folding>
             <element signature="e#24#74#0#PHP" expanded="false" />
-            <marker date="1457241002596" expanded="true" signature="1002:1076" placeholder="insert into entries... " />
+            <marker date="1457661236943" expanded="true" signature="1003:1077" placeholder="insert into entries... " />
           </folding>
         </state>
       </provider>
@@ -554,7 +640,7 @@
           <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
           <folding>
             <element signature="e#24#74#0#PHP" expanded="false" />
-            <marker date="1457241002596" expanded="true" signature="1002:1076" placeholder="insert into entries... " />
+            <marker date="1457661236943" expanded="true" signature="1003:1077" placeholder="insert into entries... " />
           </folding>
         </state>
       </provider>
@@ -577,9 +663,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#88#0#PHP" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -602,7 +686,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
-            <marker date="1457221143550" expanded="true" signature="277:291" placeholder="select * fro... ${$tableName}" />
+            <marker date="1457889032120" expanded="true" signature="614:628" placeholder="select * fro... ${$tableName}" />
           </folding>
         </state>
       </provider>
@@ -612,10 +696,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1457659698584" expanded="true" signature="1107:1162" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1170" placeholder="select * fro... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1194" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1195" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:795" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:796" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:830" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:831" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="891:925" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:928" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:947" placeholder="SELECT name projects" />
           </folding>
         </state>
       </provider>
@@ -634,7 +721,7 @@
           <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
           <folding>
             <element signature="e#24#74#0#PHP" expanded="false" />
-            <marker date="1457241002596" expanded="true" signature="1002:1076" placeholder="insert into entries... " />
+            <marker date="1457661236943" expanded="true" signature="1003:1077" placeholder="insert into entries... " />
           </folding>
         </state>
       </provider>
@@ -676,9 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-          <folding>
-            <element signature="e#24#88#0#PHP" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -687,10 +772,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1457659698584" expanded="true" signature="1107:1162" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1170" placeholder="select * fro... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1194" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1195" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:795" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:796" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:830" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:831" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="891:925" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:928" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:947" placeholder="SELECT name projects" />
           </folding>
         </state>
       </provider>
@@ -707,7 +795,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <marker date="1457221143550" expanded="true" signature="277:291" placeholder="select * fro... ${$tableName}" />
+            <marker date="1457889032120" expanded="true" signature="614:628" placeholder="select * fro... ${$tableName}" />
           </folding>
         </state>
       </provider>
@@ -778,10 +866,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Command/Command.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/PDO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="410" column="20" selection-start-line="410" selection-start-column="20" selection-end-line="410" selection-end-column="20" />
+        <state vertical-scroll-proportion="1.8660532">
+          <caret line="742" column="20" selection-start-line="742" selection-start-column="20" selection-end-line="742" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -793,52 +882,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/PDO.php">
+    <entry file="file://$PROJECT_DIR$/src/AddProject.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="742" column="20" selection-start-line="742" selection-start-column="20" selection-end-line="742" selection-end-column="20" />
-          <folding />
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#74#0#PHP" expanded="false" />
+            <marker date="1457661236946" expanded="true" signature="631:674" placeholder="insert into projects... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StartProject.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="26" />
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#24#74#0#PHP" expanded="false" />
-            <marker date="1457241002596" expanded="true" signature="1002:1076" placeholder="insert into entries... " />
+            <marker date="1457661236943" expanded="true" signature="1003:1077" placeholder="insert into entries... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nesbot/carbon/src/Carbon/Carbon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="435" column="27" selection-start-line="435" selection-start-column="27" selection-end-line="435" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Command/Command.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="410" column="20" selection-start-line="410" selection-start-column="20" selection-end-line="410" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CalculateTime.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding>
+            <element signature="e#71#142#0#PHP" expanded="false" />
+            <element signature="e#276#334#0#PHP" expanded="false" />
+            <element signature="e#1229#1287#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FormatTime.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="68" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="68" />
+          <folding>
+            <element signature="e#68#124#0#PHP" expanded="false" />
+            <element signature="e#295#351#0#PHP" expanded="false" />
+            <element signature="e#480#574#0#PHP" expanded="false" />
+            <element signature="e#1260#1329#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="106" selection-start-line="30" selection-start-column="106" selection-end-line="30" selection-end-column="106" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Command.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="e#24#88#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddProject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#24#74#0#PHP" expanded="false" />
-            <marker date="1456972823114" expanded="true" signature="630:673" placeholder="insert into projects... " />
-          </folding>
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DatabaseAdapter.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding>
-            <marker date="1457221143550" expanded="true" signature="277:291" placeholder="select * fro... ${$tableName}" />
+            <marker date="1457889032120" expanded="true" signature="614:628" placeholder="select * fro... ${$tableName}" />
           </folding>
         </state>
       </provider>
@@ -846,37 +974,27 @@
     <entry file="file://$PROJECT_DIR$/src/ShowTimes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <caret line="33" column="100" selection-start-line="33" selection-start-column="100" selection-end-line="33" selection-end-column="100" />
           <folding>
-            <marker date="1457659698584" expanded="true" signature="1107:1162" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1170" placeholder="select * fro... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1194" placeholder="select start... entries" />
-            <marker date="1457659698584" expanded="true" signature="1107:1195" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:795" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:796" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:830" placeholder="select start... entries" />
+            <marker date="1457889349337" expanded="true" signature="740:831" placeholder="select * fro... entries" />
+            <marker date="1457889349337" expanded="true" signature="891:925" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:928" placeholder="SELECT name projects" />
+            <marker date="1457889349337" expanded="true" signature="891:947" placeholder="SELECT name projects" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CalculateTime.php">
+    <entry file="file://$PROJECT_DIR$/src/ShowWeek.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ComputeTime.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FormatTime.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2811861">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1457889349000" expanded="true" signature="734:830" placeholder="SELECT start... entries" />
+            <marker date="1457889349000" expanded="true" signature="891:947" placeholder="SELECT name projects" />
+          </folding>
         </state>
       </provider>
     </entry>

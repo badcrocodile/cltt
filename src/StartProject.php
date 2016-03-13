@@ -6,8 +6,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class StartProject extends Command
-{
+class StartProject extends Command {
+
     public function configure()
     {
         $this->setName('start')

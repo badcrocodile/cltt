@@ -9,7 +9,7 @@ class FormatTime {
      * @param $seconds
      * @return string
      */
-    public static function pluralize_minute($seconds)
+    public static function pluralizeMinute($seconds)
     {
         return ($seconds % (60 * 60) < 120) && ($seconds % (60 * 60) >= 60) ? "minute" : "minutes";
     }
@@ -18,7 +18,7 @@ class FormatTime {
      * @param $seconds
      * @return string
      */
-    public static function pluralize_hour($seconds)
+    public static function pluralizeHour($seconds)
     {
         return $seconds < (60 * 60 * 2) ? "hour" : "hours";
     }
@@ -28,15 +28,15 @@ class FormatTime {
      * @param bool $long_format
      * @return string
      */
-    public static function format_total($total_seconds, $long_format = true)
+    public static function formatTotal($total_seconds, $long_format = true)
     {
         $hours   = floor($total_seconds / 3600);
         $minutes = floor(($total_seconds / 60) % 60);
         $seconds = $total_seconds % 60;
 
         if ($long_format) {
-            $pluralize_minute = FormatTime::pluralize_minute($total_seconds);
-            $pluralize_hour   = FormatTime::pluralize_hour($total_seconds);
+            $pluralize_minute = FormatTime::pluralizeMinute($total_seconds);
+            $pluralize_hour   = FormatTime::pluralizeHour($total_seconds);
 
             return ($total_format = (int)$total_seconds < (60 * 60) ? "$minutes $pluralize_minute, $seconds seconds" : "$hours $pluralize_hour, $minutes $pluralize_minute, %s seconds");
         }
@@ -48,14 +48,14 @@ class FormatTime {
      * @param $project_total_seconds
      * @return mixed
      */
-    public static function format_project_total($project_total_seconds)
+    public static function formatProjectTotal($project_total_seconds)
     {
         // Sooo... converting seconds to h:i:s kinda sucks no matter which way you go
         // especially when you need to support hour counts that exceed 24 hours
         // I'd argue this is cleaner than chaining a bunch of floor operations.
         $dtF = new Carbon("@0"); // What? Can't instantiate empty instance of Carbon??
         $dtT = new Carbon("@$project_total_seconds"); // Carbon hack to make it work
-        $total_format = FormatTime::format_total($project_total_seconds);
+        $total_format = FormatTime::formatTotal($project_total_seconds);
 
         return $project_total = $dtF->diff($dtT)->format($total_format);
     }

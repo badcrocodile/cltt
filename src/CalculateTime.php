@@ -1,53 +1,55 @@
-<?php
+<?php namespace Acme;
 
-
-namespace Acme;
 
 
 use Carbon\Carbon;
 
 class CalculateTime {
-    protected $times_array;
-    protected $elapsed_time;
-    protected $session_total;
-
-    public function __construct($timesArray)
+    /**
+     * @param $stop
+     * @param $start
+     * @return int
+     */
+    public static function sessionTotalInSeconds($stop, $start)
     {
-        $this->times = $timesArray;
+        return (int)$elapsed_time = $stop - $start;
     }
 
-    public function total_in_seconds($stop, $start)
-    {
-        return $this->elapsed_time = $stop - $start;
-    }
-
-    public function compute_session_length()
-    {
+    /**
+     * @param $timesArray
+     * @return array
+     */
+    public static function sessionTimeEntries($timesArray) {
         $x = 0;
-        $session = [];
-        foreach ($this->times as $times_array) {
-            $total_in_seconds           = ComputeTime::total_in_seconds($times_array['stop_time'], $times_array['start_time']);
-            $total_format               = FormatTime::format_total($total_in_seconds);
-            $session[$x]['date']        = date('M dS, Y', $times_array['start_time']);
-            $session[$x]['start']       = date('h:i A', $times_array['start_time']);
-            $session[$x]['stop']        = date('h:i A', $times_array['stop_time']);
-            $session_total[$x]['total'] = Carbon::createFromTimestamp($times_array['start_time'])
+        $session_times = [];
+        foreach ($timesArray as $times_array) {
+            $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
+            $total_format = FormatTime::formatTotal($total_in_seconds);
+            $session_times[$x]['date'] = date('M dS, Y', $times_array['start_time']);
+            $session_times[$x]['start'] = date('h:i A', $times_array['start_time']);
+            $session_times[$x]['stop'] = date('h:i A', $times_array['stop_time']);
+            $session_times[$x]['total'] = Carbon::createFromTimestamp($times_array['start_time'])
                 ->diff(Carbon::createFromTimestamp($times_array['stop_time']))
                 ->format($total_format);
             $x++;
         }
 
-        return $this->session_total = $session_total;
+        return $session_times;
     }
 
-    public function dosomething($mystring)
-    {
-        $upper = strtoupper($mystring);
+    /**
+     * @param $timesArray
+     * @return array
+     */
+    public static function computeProjectTotalSeconds($timesArray) {
+        $x = 0;
+        $project_total_seconds = 0;
+        foreach ($timesArray as $times_array) {
+            $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
+            $project_total_seconds += $total_in_seconds;
+            $x++;
+        }
 
-        // and now I have access to $this, which I can use to chain commands
-        // like $this->calculatesomething()->formatsomehow();
-//        var_dump($this->times);
-
-        return $upper;
+        return $project_total_seconds;
     }
 }
