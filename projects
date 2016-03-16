@@ -10,7 +10,7 @@ $app = new Application('Project App', '1.0');
 
 try
 {
-    $pdo = new PDO('sqlite:db.sqlite');
+    $pdo = new PDO('sqlite:' . dirname(__FILE__) . '/db.sqlite');
 
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -23,6 +23,7 @@ catch(Exception $exception)
 
 $dbAdapter = new Acme\DatabaseAdapter($pdo);
 
+$app->add(new Acme\ShowWeek($dbAdapter));
 $app->add(new Acme\ShowProjects($dbAdapter));
 $app->add(new Acme\AddProject($dbAdapter));
 $app->add(new Acme\ArchiveProject($dbAdapter));

@@ -21,7 +21,7 @@ class ShowTimes extends Command {
     {
         $project_id = $input->getArgument('project');
 
-        $sessions = $this->database->selectWhere("SELECT start_time, stop_time FROM entries WHERE project_id = $project_id ORDER BY start_time ASC");
+        $sessions = $this->database->selectWhere("SELECT project_id, start_time, stop_time FROM entries WHERE project_id = $project_id ORDER BY start_time ASC");
 
         $project_name = $this->database->fetchFirstRow("SELECT name FROM projects WHERE id = $project_id LIMIT 1", "name");
 

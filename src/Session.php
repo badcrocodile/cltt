@@ -1,9 +1,4 @@
-<?php
-
-
-namespace Acme;
-
-
+<?php namespace Acme;
 
 
 class Session {

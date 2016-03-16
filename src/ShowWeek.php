@@ -8,31 +8,41 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Carbon\Carbon;
 
-class ShowTimes extends Command {
+class ShowWeek extends ShowDates {
 
     public function configure()
     {
-        $this->setName('showtimes')
-             ->setDescription('Display the times logged for a project.')
-             ->addArgument('project', InputArgument::REQUIRED);
+        $this->setName('week')
+             ->setDescription('Display times logged during a specific week.')
+             ->addArgument('week', InputArgument::OPTIONAL);
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $project_id = $input->getArgument('project');
+        /*
+         * I'd prefer start of week be Saturday and end of week be Sunday but that seems
+         * to break with international norms and is not how Carbon handles things.
+         * Start of week is Monday. End of week is Sunday. That's how it is yo.
+         * https://github.com/briannesbitt/Carbon/issues/175
+         */
+        $week = $input->getArgument('week');
 
-        $sessions = $this->database->selectWhere("SELECT start_time, stop_time FROM entries WHERE project_id = $project_id ORDER BY start_time ASC");
+        $date_day   = (isset($week) ? new Carbon($week) : new Carbon());
+        $date_start = (new Carbon($date_day))->startOfWeek()->timestamp;
+        $date_end   = (new Carbon($date_day))->endOfWeek()->timestamp;
 
-        $project_name = $this->database->fetchFirstRow("SELECT name FROM projects WHERE id = $project_id LIMIT 1", "name");
+        $sessions = $this->database->selectWhere("SELECT start_time, stop_time, project_id FROM entries WHERE stop_time BETWEEN $date_start AND $date_end");
+        var_dump($sessions);
 
         $session = new Session($sessions);
 
         $table = new Table($output);
 
-        $project_total = $session->formatProjectTotal();
+        $project_totals = $session->formatProjectTotal(true);
 
-        $output->writeln("<comment>Total time for project $project_name: $project_total</comment>");
+        $output->writeln("<comment>Total time for the week of XXXX: </comment>");
 
-        $table->setHeaders(['Date', 'Start Time', 'Stop Time', 'Session Length'])->setRows($session->getSessionTimes())->render();
+        $table->setHeaders(['Project', 'Time'])->setRows($session->getSessionTimes())->render();
+
     }
 }

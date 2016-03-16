@@ -1,10 +1,10 @@
 <?php namespace Acme;
 
 
-
 use Carbon\Carbon;
 
 class CalculateTime {
+
     /**
      * @param $stop
      * @param $start
@@ -16,6 +16,9 @@ class CalculateTime {
     }
 
     /**
+     * Takes an array of start_time/stop_time formatted as timestamps.
+     * Returns a human readable array of dates/times ready for display.
+     *
      * @param $timesArray
      * @return array
      */
@@ -38,10 +41,12 @@ class CalculateTime {
     }
 
     /**
+     * Calculates the total time (in seconds) spent on a project
+     *
      * @param $timesArray
      * @return array
      */
-    public static function computeProjectTotalSeconds($timesArray) {
+    public static function computeProjectTotalSeconds($timesArray, $sort_by_project = false) {
         $x = 0;
         $project_total_seconds = 0;
         foreach ($timesArray as $times_array) {
@@ -51,5 +56,21 @@ class CalculateTime {
         }
 
         return $project_total_seconds;
+    }
+
+    /**
+     * Takes a mixed array that contains start/stop times (among other things).
+     * Returns a clean array containing only start/stop times.
+     *
+     * @param $mixedArray
+     */
+    public static function getTimesFromMixedArray($mixedArray) {
+        foreach ($mixedArray as $key => $value) {
+            if($key == 'start_time' || $key == 'stop_time') {
+                $session_times[$key] = $value;
+            }
+        }
+
+        return $session_times;
     }
 }
