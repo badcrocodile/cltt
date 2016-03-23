@@ -38,10 +38,10 @@ class FormatTime {
             $pluralize_minute = FormatTime::pluralizeMinute($total_seconds);
             $pluralize_hour   = FormatTime::pluralizeHour($total_seconds);
 
-            return ($total_format = (int)$total_seconds < (60 * 60) ? "$minutes $pluralize_minute, $seconds seconds" : "$hours $pluralize_hour, $minutes $pluralize_minute, %s seconds");
+            return ($total_format = (int)$total_seconds < (60 * 60) ? "$minutes $pluralize_minute" : "$hours $pluralize_hour, $minutes $pluralize_minute");
         }
 
-        return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+        return sprintf("%02d:%02d", $hours, $minutes);
     }
 
     /**
@@ -55,7 +55,7 @@ class FormatTime {
         // I'd argue this is cleaner than chaining a bunch of floor operations.
         $dtF = new Carbon("@0"); // What? Can't instantiate empty instance of Carbon??
         $dtT = new Carbon("@$project_total_seconds"); // Carbon hack to make it work
-        $total_format = FormatTime::formatTotal($project_total_seconds);
+        $total_format = FormatTime::formatTotal($project_total_seconds, false);
 
         return $project_total = $dtF->diff($dtT)->format($total_format);
     }

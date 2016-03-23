@@ -30,5 +30,6 @@ $app->add(new Acme\ArchiveProject($dbAdapter));
 $app->add(new Acme\StartProject($dbAdapter));
 $app->add(new Acme\StopProject($dbAdapter));
 $app->add(new Acme\ShowTimes($dbAdapter));
+$app->add(new Acme\RunningTimers($dbAdapter));
 
 $app->run();

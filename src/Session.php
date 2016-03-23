@@ -6,9 +6,9 @@ class Session {
     protected $project_total_seconds;
     protected $session_time_entries;
 
-    public function __construct($timesArray)
+    public function __construct($times_array)
     {
-        $this->times = $timesArray;
+        $this->times = $times_array;
     }
 
     public function getProjectTotalSeconds()

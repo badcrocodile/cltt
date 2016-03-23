@@ -12,7 +12,7 @@ class DatabaseAdapter {
         $this->connection = $connection;
     }
 
-    public function query($sql, $parameters)
+    public function query($sql, $parameters = null)
     {
         return $this->connection->prepare($sql)->execute($parameters);
     }

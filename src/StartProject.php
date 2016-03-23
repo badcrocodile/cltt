@@ -18,7 +18,7 @@ class StartProject extends Command {
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $project = $input->getArgument('project');
-        $startTime = round(time()/60)*60; // round to nearest minute
+        $start_time = round(time()/60)*60; // round to nearest minute
 
         /* @TODO
          * Query DB looking for any values of 'running' in column 'stop_time'.
@@ -27,8 +27,8 @@ class StartProject extends Command {
          */
 
         $this->database->query(
-            'insert into entries (project_id, start_time) values (:project, :startTime)',
-            compact('project','startTime')
+            'insert into entries (project_id, start_time) values (:project, :start_time)',
+            compact('project','start_time')
         );
 
         $output->writeln('<info>Timer started!</info>');
