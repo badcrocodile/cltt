@@ -26,8 +26,10 @@ class StartProject extends Command {
          * This will keep us to one running timer at a time.
          */
 
-        $this->database->query(
-            'insert into entries (project_id, start_time) values (:project, :start_time)',
+        $this->database->query('
+            insert into entries (project_id, start_time) 
+            values (:project, :start_time)
+            ',
             compact('project','start_time')
         );
 

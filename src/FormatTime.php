@@ -1,7 +1,6 @@
 <?php namespace Acme;
 
 
-
 use Carbon\Carbon;
 
 class FormatTime {

@@ -31,18 +31,28 @@ class ShowWeek extends ShowDates {
         $date_start = (new Carbon($date_day))->startOfWeek()->timestamp;
         $date_end   = (new Carbon($date_day))->endOfWeek()->timestamp;
 
-        $sessions = $this->database->selectWhere("SELECT start_time, stop_time, project_id FROM entries WHERE stop_time BETWEEN $date_start AND $date_end");
+        $sessions = $this->database->selectWhere("
+            SELECT start_time, stop_time, project_id 
+            FROM entries 
+            WHERE stop_time 
+            BETWEEN $date_start AND $date_end
+        ");
         var_dump($sessions);
 
         $session = new Session($sessions);
 
         $table = new Table($output);
 
-        $project_totals = $session->formatProjectTotal(true);
+        $project_totals = $session->formatProjectTotal();
 
-        $output->writeln("<comment>Total time for the week of XXXX: </comment>");
+        echo "Project totals: \n";
+        var_dump($project_totals);
 
-        $table->setHeaders(['Project', 'Time'])->setRows($session->getSessionTimes())->render();
+        $output->writeln("<comment>Total time for the week of " . (new Carbon($date_day))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_day))->endOfWeek()->toFormattedDateString() . ": </comment>");
+
+        $table_headers[] = [new TableCell("<comment>Total for week: </comment>", ['colspan' => 4])];
+
+        $table->setHeaders(['Date', 'Start', 'Stop', 'Total'])->setRows($session->getSessionTimes())->render();
 
     }
 }

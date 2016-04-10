@@ -17,9 +17,7 @@ class StopProject extends Command {
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        /* @TODO
-         * Let me run multiple projects at the same time.
-         */
+        /* TODO: Let me run multiple projects at the same time. */
         $project_id = $this->database->fetchFirstRow('
             SELECT project_id
             FROM entries 
@@ -27,58 +25,82 @@ class StopProject extends Command {
             'project_id'
         );
 
-        $is_same_day = false;
+        $start_timestamp = $this->database->fetchFirstRow('
+            SELECT start_time 
+            FROM entries 
+            WHERE stop_time IS NULL',
+            'start_time'
+        );
 
-        while(!$is_same_day) {
-            // loop through checking is same day and updating DB as necessary
-            // until we get to same day, which with any luck will usually be the
-            // same day unless we are working really hard or forgot to stop our timer.
+        $stop_timestamp = round(time()/60)*60; // round to nearest minute
 
-            echo "\nIt's a different day.\n";
+        $start_time = Carbon::createFromTimestamp($start_timestamp);
+        $stop_time = Carbon::createFromTimestamp($stop_timestamp);
 
-            $stop_timestamp = round(time()/60)*60; // round to nearest minute
+        $is_same_day = $start_time->isSameDay($stop_time);
 
-            $start_timestamp = $this->database->fetchFirstRow('
-                SELECT start_time 
-                FROM entries 
-                WHERE stop_time IS NULL',
-                'start_time'
-            );
-
-            $start_time  = Carbon::createFromTimestamp($start_timestamp);
-            $stop_time   = Carbon::createFromTimestamp($stop_timestamp);
-            $is_same_day = $start_time->isSameDay($stop_time);
-
-            $stop_at_midnight = Carbon::create($start_time)->endOfDay()->timestamp;
-            $start_new_day    = Carbon::create($stop_at_midnight)->addMinute()->timestamp;
+        if($is_same_day) {
+            echo "\nIt's the same dayy.\n";
 
             $this->database->query('
                 UPDATE entries 
-                SET stop_time = :stop_at_midnight 
+                SET stop_time = :stop_timestamp
                 WHERE stop_time IS NULL',
-                compact('stop_at_midnight')
+                compact('stop_timestamp')
             );
+        }
+        else {
+            while(! $is_same_day) {
+                $stop_at_midnight = Carbon::createFromTimestamp($start_timestamp)->endOfDay()->timestamp;
+                $start_new_day    = Carbon::createFromTimestamp($start_timestamp)->endOfDay()->addSecond()->timestamp;
+                echo "\nIt's a different day.\n";
+                echo "Stop at midnight: " . Carbon::createFromTimestamp($stop_at_midnight) . "\n";
+                echo "Start new day: " . Carbon::createFromTimestamp($start_new_day) . "\n";
 
-            $this->database->query('
-                INSERT INTO entries (project_id, start_time) 
-                VALUES (:project_id, :start_new_day)',
-                compact('project_id', 'start_new_day')
-            );
-
-            if ($is_same_day) {
-                // haven't passed midnight so go ahead an putter in the database
+                // Set stop time to 11:59pm
                 $this->database->query('
-                UPDATE entries 
-                SET stop_time = :stop_time 
-                WHERE stop_time IS NULL',
-                    compact('stop_time')
+                    UPDATE entries 
+                    SET stop_time = :stop_at_midnight 
+                    WHERE stop_time IS NULL',
+                    compact('stop_at_midnight')
+                );
+    
+                // Insert new row
+                // Set start time to 12:00am
+                $this->database->query('
+                    INSERT INTO entries (project_id, start_time) 
+                    VALUES (:project_id, :start_new_day)',
+                    compact('project_id', 'start_new_day')
                 );
 
-                echo "\nIt's the same day.\n";
+                // Check to see if we are on the same day yet
+                $start_timestamp = $this->database->fetchFirstRow('
+                    SELECT start_time 
+                    FROM entries 
+                    WHERE stop_time IS NULL',
+                    'start_time'
+                );
 
-                exit();
+                $start_time = Carbon::createFromTimestamp($start_timestamp);
+                $stop_time = Carbon::createFromTimestamp($stop_timestamp);
+
+                $is_same_day = $start_time->isSameDay($stop_time);
+
+                echo "Is same day: $is_same_day\n";
+
+                if($is_same_day) {
+                    echo "\nIt's finally the same dayy.\n";
+
+                    $this->database->query('
+                        UPDATE entries 
+                        SET stop_time = :stop_timestamp
+                        WHERE stop_time IS NULL',
+                        compact('stop_timestamp')
+                    );
+                }
             }
         }
+
 
 
 

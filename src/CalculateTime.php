@@ -26,6 +26,8 @@ class CalculateTime {
         $x = 0;
         $session_times = [];
         foreach ($timesArray as $times_array) {
+            echo "Times Array: \n";
+            var_dump($times_array);
             $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
             $total_format = FormatTime::formatTotal($total_in_seconds, false);
             $session_times[$x]['id']    = $times_array['id'];

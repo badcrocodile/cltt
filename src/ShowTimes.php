@@ -25,15 +25,29 @@ class ShowTimes extends Command {
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $project_id = $input->getArgument('project');
+
         $edit_entry = $input->getOption('edit');
 
         $this->editTimeEntry($input, $output, $edit_entry);
 
-        $sessions = $this->database->selectWhere("SELECT id, project_id, start_time, stop_time FROM entries WHERE project_id = $project_id ORDER BY start_time ASC");
+        $sessions = $this->database->selectWhere("
+            SELECT id, project_id, start_time, stop_time 
+            FROM entries 
+            WHERE project_id = $project_id 
+            ORDER BY start_time ASC
+        ");
+
         $session  = new Session($sessions);
 
         $project_total = $session->formatProjectTotal();
-        $project_name  = $this->database->fetchFirstRow("SELECT name FROM projects WHERE id = $project_id LIMIT 1", "name");
+
+        $project_name  = $this->database->fetchFirstRow("
+            SELECT name 
+            FROM projects 
+            WHERE id = $project_id 
+            LIMIT 1"
+            , "name"
+        );
 
         $table = new Table($output);
 
@@ -47,6 +61,13 @@ class ShowTimes extends Command {
         $table->setHeaders($table_headers)->setRows($table_rows)->render();
     }
 
+    /**
+     * Edit one of the time entries
+     * 
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param $time_entry_id
+     */
     private function editTimeEntry(InputInterface $input, OutputInterface $output, $time_entry_id) {
         if(isset($time_entry_id)) {
             $edit_row            = $this->database->selectWhere('SELECT start_time, stop_time FROM entries WHERE id = ' . $time_entry_id);
@@ -60,10 +81,13 @@ class ShowTimes extends Command {
                 array('Start Time', 'Stop Time'),
                 1
             );
+
             $edit_start_or_stop->setErrorMessage('Not a valid selection bro');
+
             $edit_column = $helper->ask($input, $output, $edit_start_or_stop);
 
             $enter_new_time = new Question('Enter new time: ', '5:00 pm');
+
             $new_time = $helper->ask($input, $output, $enter_new_time);
 
             $output->writeln("\n<info>$edit_column will be set to $new_time</info>\n");
@@ -73,9 +97,19 @@ class ShowTimes extends Command {
             var_dump($new_time_entry);
 
             if($edit_column == "Start Time") {
-                $this->database->query('UPDATE entries SET start_time = :new_time_entry WHERE id = :time_entry_id', compact('new_time_entry', 'time_entry_id'));
+                $this->database->query('
+                    UPDATE entries 
+                    SET start_time = :new_time_entry 
+                    WHERE id = :time_entry_id',
+                    compact('new_time_entry', 'time_entry_id')
+                );
             } else {
-                $this->database->query('UPDATE entries SET stop_time = :new_time_entry WHERE id = :time_entry_id', compact('new_time_entry', 'time_entry_id'));
+                $this->database->query('
+                    UPDATE entries 
+                    SET stop_time = :new_time_entry 
+                    WHERE id = :time_entry_id',
+                    compact('new_time_entry', 'time_entry_id')
+                );
             }
 
             exit();
