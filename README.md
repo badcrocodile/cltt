@@ -3,8 +3,7 @@
 A Command Line Interface Time Tracker. This is a work in progress and should not be considered stable... yet
 
 ### Built with
-* PHP and the wonderful Symfony Console component
-* SQLite storage
+* PHP/SQLite on the wonderful Symfony Console component
 * Carbon's PHP API extension for DateTime handling
 
 ### Features
