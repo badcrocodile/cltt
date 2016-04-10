@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef712de7-bcab-4c4e-b9f8-f9ebfe139609" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite" afterPath="$PROJECT_DIR$/db.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects" afterPath="$PROJECT_DIR$/projects" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CalculateTime.php" afterPath="$PROJECT_DIR$/src/CalculateTime.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FormatTime.php" afterPath="$PROJECT_DIR$/src/FormatTime.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShowTimes.php" afterPath="$PROJECT_DIR$/src/ShowTimes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ShowWeek.php" afterPath="$PROJECT_DIR$/src/ShowWeek.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StartProject.php" afterPath="$PROJECT_DIR$/src/StartProject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StopProject.php" afterPath="$PROJECT_DIR$/src/StopProject.php" />
     </list>
     <ignored path="klok.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,7 +37,7 @@
           <file leaf-file-name="DatabaseAdapter.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DatabaseAdapter.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="366">
+                <state relative-caret-position="338">
                   <caret line="24" column="48" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="48" />
                   <folding>
                     <marker date="1458696738387" expanded="true" signature="621:635" placeholder="select * fro... ${$tableName}" />
@@ -53,25 +46,25 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ShowTimes.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ShowTimes.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ShowTimes.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-835">
-                  <caret line="54" column="61" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="61" />
+                <state relative-caret-position="149">
+                  <caret line="96" column="17" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="17" />
                   <folding>
                     <element signature="e#2209#2434#0#PHP" expanded="false" />
-                    <marker date="1460299799055" expanded="true" signature="1179:1260" placeholder="select start... entries" />
-                    <marker date="1460299799055" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
-                    <marker date="1460299799055" expanded="true" signature="1179:1308" placeholder="select start... entries" />
-                    <marker date="1460299799055" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
-                    <marker date="1460299799055" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
-                    <marker date="1460299799055" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
-                    <marker date="1460299799055" expanded="true" signature="4056:4119" placeholder="UPDATE entri... " />
-                    <marker date="1460299799055" expanded="true" signature="4056:4171" placeholder="UPDATE entri... " />
-                    <marker date="1460299799055" expanded="true" signature="4338:4389" placeholder="UPDATE entri... " />
-                    <marker date="1460299799055" expanded="true" signature="4338:4390" placeholder="UPDATE entri... " />
-                    <marker date="1460299799055" expanded="true" signature="4338:4452" placeholder="UPDATE entri... " />
-                    <marker date="1460299799055" expanded="true" signature="4338:4535" placeholder="UPDATE entri... " />
+                    <marker date="1460309537225" expanded="true" signature="1179:1260" placeholder="select start... entries" />
+                    <marker date="1460309537225" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
+                    <marker date="1460309537225" expanded="true" signature="1179:1308" placeholder="select start... entries" />
+                    <marker date="1460309537225" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
+                    <marker date="1460309537225" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
+                    <marker date="1460309537225" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
+                    <marker date="1460309537225" expanded="true" signature="4058:4121" placeholder="UPDATE entri... " />
+                    <marker date="1460309537225" expanded="true" signature="4058:4173" placeholder="UPDATE entri... " />
+                    <marker date="1460309537225" expanded="true" signature="4340:4391" placeholder="UPDATE entri... " />
+                    <marker date="1460309537225" expanded="true" signature="4340:4392" placeholder="UPDATE entri... " />
+                    <marker date="1460309537225" expanded="true" signature="4340:4454" placeholder="UPDATE entri... " />
+                    <marker date="1460309537225" expanded="true" signature="4340:4537" placeholder="UPDATE entri... " />
                   </folding>
                 </state>
               </provider>
@@ -101,11 +94,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CalculateTime.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CalculateTime.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/CalculateTime.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+                <state relative-caret-position="149">
+                  <caret line="29" column="17" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="17" />
                   <folding>
                     <element signature="e#71#142#0#PHP" expanded="false" />
                   </folding>
@@ -116,8 +109,8 @@
           <file leaf-file-name="Session.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Session.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="26">
-                  <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+                <state relative-caret-position="149">
+                  <caret line="6" column="10" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -126,8 +119,8 @@
           <file leaf-file-name="FormatTime.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/FormatTime.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                <state relative-caret-position="149">
+                  <caret line="51" column="33" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="33" />
                   <folding>
                     <element signature="e#67#123#0#PHP" expanded="false" />
                     <element signature="e#294#350#0#PHP" expanded="false" />
@@ -145,8 +138,8 @@
           <file leaf-file-name="ShowWeek.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ShowWeek.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="52" column="96" selection-start-line="52" selection-start-column="96" selection-end-line="52" selection-end-column="96" />
+                <state relative-caret-position="177">
+                  <caret line="48" column="11" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="11" />
                   <folding>
                     <marker date="1460307558961" expanded="true" signature="1290:1423" placeholder="SELECT start... entries" />
                   </folding>
@@ -189,9 +182,9 @@
         <option value="$PROJECT_DIR$/projects" />
         <option value="$PROJECT_DIR$/src/StopProject.php" />
         <option value="$PROJECT_DIR$/src/StartProject.php" />
-        <option value="$PROJECT_DIR$/src/ShowTimes.php" />
         <option value="$PROJECT_DIR$/src/ShowWeek.php" />
         <option value="$PROJECT_DIR$/src/FormatTime.php" />
+        <option value="$PROJECT_DIR$/src/ShowTimes.php" />
         <option value="$PROJECT_DIR$/src/CalculateTime.php" />
       </list>
     </option>
@@ -340,12 +333,12 @@
       <workItem from="1460071945808" duration="6296000" />
       <workItem from="1460130315368" duration="700000" />
       <workItem from="1460160787964" duration="11971000" />
-      <workItem from="1460252201804" duration="6275000" />
+      <workItem from="1460252201804" duration="7379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57468000" />
+    <option name="totallyTimeSpent" value="58572000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-3" width="1928" height="1052" extended-state="6" />
@@ -463,18 +456,18 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="e#2209#2434#0#PHP" expanded="false" />
-            <marker date="1460299799055" expanded="true" signature="1179:1260" placeholder="select start... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1308" placeholder="select start... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
-            <marker date="1460299799055" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
-            <marker date="1460299799055" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
-            <marker date="1460299799055" expanded="true" signature="4056:4119" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4056:4171" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4389" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4390" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4452" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4535" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="1179:1260" placeholder="select start... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1308" placeholder="select start... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
+            <marker date="1460309537225" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
+            <marker date="1460309537225" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
+            <marker date="1460309537225" expanded="true" signature="4058:4121" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4058:4173" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4391" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4392" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4454" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4537" placeholder="UPDATE entri... " />
           </folding>
         </state>
       </provider>
@@ -540,18 +533,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#2209#2434#0#PHP" expanded="false" />
-            <marker date="1460299799055" expanded="true" signature="1179:1260" placeholder="select start... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1308" placeholder="select start... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
-            <marker date="1460299799055" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
-            <marker date="1460299799055" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
-            <marker date="1460299799055" expanded="true" signature="4056:4119" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4056:4171" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4389" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4390" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4452" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4535" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="1179:1260" placeholder="select start... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1308" placeholder="select start... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
+            <marker date="1460309537225" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
+            <marker date="1460309537225" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
+            <marker date="1460309537225" expanded="true" signature="4058:4121" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4058:4173" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4391" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4392" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4454" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4537" placeholder="UPDATE entri... " />
           </folding>
         </state>
       </provider>
@@ -818,16 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DatabaseAdapter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="24" column="48" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="48" />
-          <folding>
-            <marker date="1458696738387" expanded="true" signature="621:635" placeholder="select * fro... ${$tableName}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StopProject.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -862,6 +845,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FormatTime.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="33" />
+          <folding>
+            <element signature="e#67#123#0#PHP" expanded="false" />
+            <element signature="e#294#350#0#PHP" expanded="false" />
+            <element signature="e#479#573#0#PHP" expanded="false" />
+            <element signature="e#1214#1283#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ShowWeek.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="590">
@@ -872,55 +876,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FormatTime.php">
+    <entry file="file://$PROJECT_DIR$/src/ShowTimes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="149">
+          <caret line="96" column="17" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="17" />
           <folding>
-            <element signature="e#67#123#0#PHP" expanded="false" />
-            <element signature="e#294#350#0#PHP" expanded="false" />
-            <element signature="e#479#573#0#PHP" expanded="false" />
-            <element signature="e#1214#1283#0#PHP" expanded="false" />
+            <element signature="e#2209#2434#0#PHP" expanded="false" />
+            <marker date="1460309537225" expanded="true" signature="1179:1260" placeholder="select start... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1308" placeholder="select start... entries" />
+            <marker date="1460309537225" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
+            <marker date="1460309537225" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
+            <marker date="1460309537225" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
+            <marker date="1460309537225" expanded="true" signature="4058:4121" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4058:4173" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4391" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4392" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4454" placeholder="UPDATE entri... " />
+            <marker date="1460309537225" expanded="true" signature="4340:4537" placeholder="UPDATE entri... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Session.php">
+    <entry file="file://$PROJECT_DIR$/src/DatabaseAdapter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="338">
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="48" />
+          <folding>
+            <marker date="1458696738387" expanded="true" signature="621:635" placeholder="select * fro... ${$tableName}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CalculateTime.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+        <state relative-caret-position="149">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="17" />
           <folding>
             <element signature="e#71#142#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShowTimes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-835">
-          <caret line="54" column="61" selection-start-line="54" selection-start-column="57" selection-end-line="54" selection-end-column="61" />
-          <folding>
-            <element signature="e#2209#2434#0#PHP" expanded="false" />
-            <marker date="1460299799055" expanded="true" signature="1179:1260" placeholder="select start... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1261" placeholder="select * fro... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1308" placeholder="select start... entries" />
-            <marker date="1460299799055" expanded="true" signature="1179:1318" placeholder="select * fro... entries" />
-            <marker date="1460299799055" expanded="true" signature="1495:1590" placeholder="SELECT name projects" />
-            <marker date="1460299799055" expanded="true" signature="2637:2690" placeholder="SELECT start... entries" />
-            <marker date="1460299799055" expanded="true" signature="4056:4119" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4056:4171" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4389" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4390" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4452" placeholder="UPDATE entri... " />
-            <marker date="1460299799055" expanded="true" signature="4338:4535" placeholder="UPDATE entri... " />
           </folding>
         </state>
       </provider>

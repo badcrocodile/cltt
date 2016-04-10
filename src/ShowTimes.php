@@ -94,7 +94,7 @@ class ShowTimes extends Command {
 
             $new_time_entry = Carbon::createFromFormat('M j, Y h:i a', $edit_row_date . " " . $new_time)->timestamp;
 
-            var_dump($new_time_entry);
+//            var_dump($new_time_entry);
 
             if($edit_column == "Start Time") {
                 $this->database->query('
