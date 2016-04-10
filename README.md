@@ -1,6 +1,6 @@
-# clitt
+# CLI Time Tracker
 
-A Command Line Interface Time Tracker. This is a work in progress and should not be considered stable... yet
+A Command Line Interface Time Tracker. This is a work in progress and is not stable.
 
 ### Built with
 * PHP/SQLite on the wonderful Symfony Console component
