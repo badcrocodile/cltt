@@ -38,28 +38,35 @@ class ShowWeek extends ShowDates {
         $date_week_end      = (new Carbon($date_week))->endOfWeek()->timestamp;
 
         $sessions = $this->database->selectWhere("
-            SELECT id, project_id, start_time, stop_time 
-            FROM entries 
+            SELECT entries.id, project_id, start_time, stop_time, name
+            FROM entries
+            JOIN projects
+            ON entries.project_id = projects.id
             WHERE stop_time 
             BETWEEN $date_week_start AND $date_week_end
         ");
 
         $session = new Session($sessions);
 
+        echo "Session:\n";
+        var_dump($session);
+
         $table = new Table($output);
 
         $project_total = $session->formatProjectTotal();
+        echo "Project total:\n";
+        var_dump($project_total);
 
         $table_header_message = "<comment>" . (new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString() . ": </comment>";
 
-        $table_headers[] = [new TableCell($table_header_message, ['colspan' => 5])];
-        $table_headers[] = ['ID', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
+        $table_headers[] = [new TableCell($table_header_message, ['colspan' => 6])];
+        $table_headers[] = ['ID', 'Project', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
 
-        $table_rows   = $session->getSessionTimes();
+        $table_rows   = $session->getSessionTimesWithProjectName();
         $table_rows[] = new TableSeparator();
-        $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 4)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
+        $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 5)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
 
-        $table->setHeaders($table_headers)->setRows($session->getSessionTimes())->render();
+        $table->setHeaders($table_headers)->setRows($table_rows)->render();
 
         $this->paginate($input, $output, $date_week);
     }
