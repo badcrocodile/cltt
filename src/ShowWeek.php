@@ -2,6 +2,8 @@
 
 
 use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Helper\TableCell;
+use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,7 +34,7 @@ class ShowWeek extends ShowDates {
         $date_end   = (new Carbon($date_day))->endOfWeek()->timestamp;
 
         $sessions = $this->database->selectWhere("
-            SELECT start_time, stop_time, project_id 
+            SELECT id, project_id, start_time, stop_time 
             FROM entries 
             WHERE stop_time 
             BETWEEN $date_start AND $date_end
@@ -43,16 +45,18 @@ class ShowWeek extends ShowDates {
 
         $table = new Table($output);
 
-        $project_totals = $session->formatProjectTotal();
+        $project_total = $session->formatProjectTotal();
 
-        echo "Project totals: \n";
-        var_dump($project_totals);
+        $table_header_message = "<comment>Time entries for the week of " . (new Carbon($date_day))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_day))->endOfWeek()->toFormattedDateString() . ": </comment>";
 
-        $output->writeln("<comment>Total time for the week of " . (new Carbon($date_day))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_day))->endOfWeek()->toFormattedDateString() . ": </comment>");
+        $table_headers[] = [new TableCell($table_header_message, ['colspan' => 5])];
+        $table_headers[] = ['ID', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
 
-        $table_headers[] = [new TableCell("<comment>Total for week: </comment>", ['colspan' => 4])];
+        $table_rows   = $session->getSessionTimes();
+        $table_rows[] = new TableSeparator();
+        $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 4)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
 
-        $table->setHeaders(['Date', 'Start', 'Stop', 'Total'])->setRows($session->getSessionTimes())->render();
+        $table->setHeaders($table_headers)->setRows($session->getSessionTimes())->render();
 
     }
 }
