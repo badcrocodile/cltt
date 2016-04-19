@@ -27,11 +27,10 @@ class ShowWeek extends ShowDates {
          * Start of week is Monday. End of week is Sunday. That's how it is yo.
          * https://github.com/briannesbitt/Carbon/issues/175
          */
-        $week = $input->getArgument('week');
-
-        $date_day   = (isset($week) ? new Carbon($week) : new Carbon());
-        $date_start = (new Carbon($date_day))->startOfWeek()->timestamp;
-        $date_end   = (new Carbon($date_day))->endOfWeek()->timestamp;
+        $week          = $input->getArgument('week');
+        $date_day      = (isset($week) ? new Carbon($week) : new Carbon());
+        $date_start    = (new Carbon($date_day))->startOfWeek()->timestamp;
+        $date_end      = (new Carbon($date_day))->endOfWeek()->timestamp;
 
         $sessions = $this->database->selectWhere("
             SELECT id, project_id, start_time, stop_time 
@@ -39,7 +38,6 @@ class ShowWeek extends ShowDates {
             WHERE stop_time 
             BETWEEN $date_start AND $date_end
         ");
-        var_dump($sessions);
 
         $session = new Session($sessions);
 
