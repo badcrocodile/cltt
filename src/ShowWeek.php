@@ -78,15 +78,11 @@ class ShowWeek extends ShowDates {
         switch ($paginate) {
             case "n":
                 $input->setArgument('week', $current_week->addWeek());
-
                 $this->execute($input, $output);
-
                 break;
             case "p":
                 $input->setArgument('week', $current_week->subWeek());
-
                 $this->execute($input, $output);
-
                 break;
         }
     }

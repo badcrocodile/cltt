@@ -20,12 +20,6 @@ class StartProject extends Command {
         $project = $input->getArgument('project');
         $start_time = round(time()/60)*60; // round to nearest minute
 
-        /* @TODO
-         * Query DB looking for any values of 'running' in column 'stop_time'.
-         * If one is found update stop_time with current timestamp BEFORE starting the timer on the next project.
-         * This will keep us to one running timer at a time.
-         */
-
         $this->database->query('
             insert into entries (project_id, start_time) 
             values (:project, :start_time)
