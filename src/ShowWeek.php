@@ -48,14 +48,9 @@ class ShowWeek extends ShowDates {
 
         $session = new Session($sessions);
 
-        echo "Session:\n";
-        var_dump($session);
-
         $table = new Table($output);
 
         $project_total = $session->formatProjectTotal();
-        echo "Project total:\n";
-        var_dump($project_total);
 
         $table_header_message = "<comment>" . (new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString() . ": </comment>";
 
