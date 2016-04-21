@@ -12,6 +12,10 @@ class Command extends SymfonyCommand {
 
     protected $database;
 
+    /**
+     * Command constructor.
+     * @param \Acme\DatabaseAdapter $database
+     */
     public function __construct(DatabaseAdapter $database)
     {
         $this->database = $database;
@@ -19,6 +23,10 @@ class Command extends SymfonyCommand {
         parent::__construct();
     }
 
+    /**
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @return mixed
+     */
     protected function showProjects(OutputInterface $output) {
         if (!$projects = $this->database->fetchAll('projects')) {
             return $output->writeln('<info>No projects at the moment!</info>');

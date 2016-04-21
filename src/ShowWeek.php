@@ -24,6 +24,11 @@ class ShowWeek extends ShowDates {
              ->addArgument('week', InputArgument::OPTIONAL);
     }
 
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @return int|null|void
+     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         /*
@@ -66,6 +71,11 @@ class ShowWeek extends ShowDates {
         $this->paginate($input, $output, $date_week);
     }
 
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param $starting_week
+     */
     public function paginate(InputInterface $input, OutputInterface $output, $starting_week) {
         $current_week = $starting_week;
 

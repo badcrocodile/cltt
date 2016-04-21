@@ -15,9 +15,13 @@ class StopProject extends Command {
              ->setDescription('Stop the timer on a project.');
     }
 
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @return int|null|void
+     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        /* TODO: Let me run multiple projects at the same time. */
         $project_id = $this->database->fetchFirstRow('
             SELECT project_id
             FROM entries 
@@ -100,10 +104,7 @@ class StopProject extends Command {
                 }
             }
         }
-
-
-
-
+        
         $output->writeln('<info>Timer stopped!</info>');
     }
 

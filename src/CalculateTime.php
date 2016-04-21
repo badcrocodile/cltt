@@ -41,6 +41,10 @@ class CalculateTime {
         return $session_times;
     }
 
+    /**
+     * @param $timesArray
+     * @return array
+     */
     public static function sessionTimeEntriesWithProjectName($timesArray) {
         $x = 0;
         $session_times = [];

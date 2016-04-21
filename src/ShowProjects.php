@@ -14,6 +14,11 @@ class ShowProjects extends Command
             ->setDescription('Show all projects.');
     }
 
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @return int|null|void
+     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $this->showProjects($output);

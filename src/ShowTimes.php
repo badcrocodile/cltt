@@ -22,6 +22,11 @@ class ShowTimes extends Command {
              ->addOption('edit', 'e', InputOption::VALUE_REQUIRED, 'Edit a time entry', null);
     }
 
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @return int|null|void
+     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $project_id = $input->getArgument('project');
