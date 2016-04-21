@@ -28,9 +28,9 @@ class RunningTimers extends Command {
         ", "name");
 
         if($running_timers) {
-            $output->writeln('<info>' . $running_timers . '</info>');
+            $output->writeln((new OutputMessage($running_timers))->asInfo());
         } else {
-            $output->writeln('<info>No timers currently running.</info>');
+            $output->writeln((new OutputMessage('No timers currently running'))->asInfo());
         }
     }
 

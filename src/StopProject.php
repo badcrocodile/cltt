@@ -44,7 +44,7 @@ class StopProject extends Command {
         $is_same_day = $start_time->isSameDay($stop_time);
 
         if($is_same_day) {
-            echo "\nIt's the same dayy.\n";
+//            echo "\nIt's the same day.\n";
 
             $this->database->query('
                 UPDATE entries 
@@ -57,9 +57,9 @@ class StopProject extends Command {
             while(! $is_same_day) {
                 $stop_at_midnight = Carbon::createFromTimestamp($start_timestamp)->endOfDay()->timestamp;
                 $start_new_day    = Carbon::createFromTimestamp($start_timestamp)->endOfDay()->addSecond()->timestamp;
-                echo "\nIt's a different day.\n";
-                echo "Stop at midnight: " . Carbon::createFromTimestamp($stop_at_midnight) . "\n";
-                echo "Start new day: " . Carbon::createFromTimestamp($start_new_day) . "\n";
+//                echo "\nIt's a different day.\n";
+//                echo "Stop at midnight: " . Carbon::createFromTimestamp($stop_at_midnight) . "\n";
+//                echo "Start new day: " . Carbon::createFromTimestamp($start_new_day) . "\n";
 
                 // Set stop time to 11:59pm
                 $this->database->query('
@@ -90,10 +90,10 @@ class StopProject extends Command {
 
                 $is_same_day = $start_time->isSameDay($stop_time);
 
-                echo "Is same day: $is_same_day\n";
+//                echo "Is same day: $is_same_day\n";
 
                 if($is_same_day) {
-                    echo "\nIt's finally the same dayy.\n";
+//                    echo "\nIt's finally the same day.\n";
 
                     $this->database->query('
                         UPDATE entries 
@@ -104,8 +104,8 @@ class StopProject extends Command {
                 }
             }
         }
-        
-        $output->writeln('<info>Timer stopped!</info>');
+
+        $output->writeln((new OutputMessage('Timer stopped!'))->asInfo());
     }
 
 }

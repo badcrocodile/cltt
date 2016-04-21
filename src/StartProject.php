@@ -32,7 +32,7 @@ class StartProject extends Command {
             compact('project','start_time')
         );
 
-        $output->writeln('<info>Timer started!</info>');
+        $output->writeln((new OutputMessage('Timer started!'))->asInfo());
     }
 
 }

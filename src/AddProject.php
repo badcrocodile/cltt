@@ -29,7 +29,7 @@ class AddProject extends Command {
             compact('project')
         );
 
-        $output->writeln('<info>Project Added!</info>');
+        $output->writeln((new OutputMessage('Project added'))->asInfo());
 
         $this->showProjects($output);
     }

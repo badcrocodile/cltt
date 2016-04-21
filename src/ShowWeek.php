@@ -57,7 +57,7 @@ class ShowWeek extends ShowDates {
 
         $project_total = $session->formatProjectTotal();
 
-        $table_header_message = "<comment>" . (new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString() . ": </comment>";
+        $table_header_message = (new OutputMessage((new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString()))->asComment();
 
         $table_headers[] = [new TableCell($table_header_message, ['colspan' => 6])];
         $table_headers[] = ['ID', 'Project', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
@@ -72,6 +72,8 @@ class ShowWeek extends ShowDates {
     }
 
     /**
+     * Paginates through results by week
+     *
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @param $starting_week
