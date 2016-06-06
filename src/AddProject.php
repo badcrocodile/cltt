@@ -8,6 +8,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class AddProject extends Command {
 
+    /**
+     *
+     */
     public function configure()
     {
         $this->setName('add')

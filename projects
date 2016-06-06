@@ -13,17 +13,26 @@ try
     $pdo = new PDO('sqlite:' . dirname(__FILE__) . '/db.sqlite') or die("Can't open the database Captain.");
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if(!$pdo) {
-        $pdo->exec("CREATE TABLE IF NOT EXISTS entries(
-                    id INTEGER PRIMARY KEY,
-                    project_id INTEGER,
-                    comments TEXT,
-                    start_time TEXT,
-                    stop_time TEXT)");
-        $pdo->exec("CREATE TABLE IF NOT EXISTS projects(
-                    id INTEGER PRIMARY KEY,
-                    name TEXT)");
-    }
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS projects(
+            id INTEGER PRIMARY KEY,
+            name TEXT
+        )"
+    );
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS entries(
+            id INTEGER PRIMARY KEY,
+            project_id INTEGER,
+            start_time TEXT,
+            stop_time TEXT
+        )"
+    );
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS comments(
+            id INTEGER PRIMARY KEY,
+            entry_id INTEGER
+        )"
+    );
 }
 catch(Exception $exception)
 {
