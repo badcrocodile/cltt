@@ -15,6 +15,7 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
+            'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\Console\\' => 26,
         ),
         'C' => 
@@ -35,6 +36,10 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Symfony\\Component\\HttpFoundation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
         'Symfony\\Component\\Console\\' => 
         array (
