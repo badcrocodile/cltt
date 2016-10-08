@@ -52,7 +52,7 @@ class CalculateTime {
             $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
             $total_format = FormatTime::formatTotal($total_in_seconds, false);
             $session_times[$x]['id']    = $times_array['id'];
-            $session_times[$x]['name'] = $times_array['name'];
+            $session_times[$x]['name']  = $times_array['name'];
             $session_times[$x]['date']  = date('D, M dS, Y', $times_array['start_time']);
             $session_times[$x]['start'] = date('h:i A', $times_array['start_time']);
             $session_times[$x]['stop']  = date('h:i A', $times_array['stop_time']);

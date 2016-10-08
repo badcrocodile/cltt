@@ -1,6 +1,7 @@
 {
     "require" : {
         "symfony/console" : "~3.0",
+        "symfony/http-foundation" : "~3.0",
         "nesbot/carbon": "~1.14"
     },
     "autoload" : {
