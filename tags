@@ -694,7 +694,7 @@ array	vendor/symfony/http-foundation/Tests/Session/Storage/MetadataBagTest.php	/
 asComment	src/OutputMessage.php	/^    public function asComment() {$/;"	f
 asError	src/OutputMessage.php	/^    public function asError() {$/;"	f
 asInfo	src/OutputMessage.php	/^    public function asInfo() {$/;"	f
-asQuestin	src/OutputMessage.php	/^    public function asQuestin() {$/;"	f
+asQuestion	src/OutputMessage.php	/^    public function asQuestion() {$/;"	f
 ask	vendor/symfony/console/Helper/QuestionHelper.php	/^    public function ask(InputInterface $input, OutputInterface $output, Question $question)$/;"	f
 ask	vendor/symfony/console/Helper/SymfonyQuestionHelper.php	/^    public function ask(InputInterface $input, OutputInterface $output, Question $question)$/;"	f
 ask	vendor/symfony/console/Style/StyleInterface.php	/^    public function ask($question, $default = null, $validator = null);$/;"	f
@@ -5334,7 +5334,7 @@ shortcuts	vendor/symfony/console/Input/InputDefinition.php	/^    private $shortc
 shortcuts	vendor/symfony/console/Input/InputOption.php	/^            $shortcuts = array_filter($shortcuts);$/;"	v
 shortcuts	vendor/symfony/console/Input/InputOption.php	/^            $shortcuts = preg_split('{(\\|)-?}', ltrim($shortcut, '-'));$/;"	v
 should	vendor/symfony/http-foundation/IpUtils.php	/^     * This class should not be instantiated.$/;"	c
-showProjects	src/Command.php	/^    protected function showProjects(OutputInterface $output) {$/;"	f
+showProjectsTable	src/Command.php	/^    protected function showProjectsTable(OutputInterface $output) {$/;"	f
 sign	vendor/nesbot/carbon/src/Carbon/CarbonInterval.php	/^        $sign = $interval->invert === 1 ? -1 : 1;$/;"	v
 simpleAnswerProvider	vendor/symfony/console/Tests/Helper/QuestionHelperTest.php	/^    public function simpleAnswerProvider()$/;"	f
 singularId	vendor/symfony/translation/Loader/MoFileLoader.php	/^            $singularId = $pluralId = null;$/;"	v

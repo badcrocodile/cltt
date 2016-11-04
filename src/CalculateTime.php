@@ -42,6 +42,7 @@ class CalculateTime {
     }
 
     /**
+     * TODO: Adding the stuff we need in this way isn't sustainable. We should be able to just pass the data fields we want into a single method (id, name, etc)
      * @param $timesArray
      * @return array
      */

@@ -18,7 +18,7 @@ class OutputMessage {
         return "<info>" . $this->message . "</info>";
     }
 
-    public function asQuestin() {
+    public function asQuestion() {
         return "<question>" . $this->message . "</question>";
     }
 

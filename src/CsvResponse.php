@@ -6,32 +6,40 @@ class CsvResponse extends Response
 {
     protected $data;
 
-    protected $filename = 'export.csv';
+    protected $filename = 'file.csv';
 
     public function __construct($data = array(), $status = 200, $headers = array())
     {
         parent::__construct('', $status, $headers);
+
+        $this->headers = $headers;
 
         $this->setData($data);
     }
 
     public function setData(array $data)
     {
-        $output = fopen('php://temp', 'r+');
+        $output = fopen('file.csv', 'w') or die("Can't open file");
+
+        fputcsv($output, $this->headers);
 
         foreach ($data as $row) {
             fputcsv($output, $row);
         }
 
-        rewind($output);
-        $this->data = '';
-        while ($line = fgets($output)) {
-            $this->data .= $line;
-        }
+        fclose($output);
 
-        $this->data .= fgets($output);
+//        rewind($output);
+//
+//        $this->data = '';
+//
+//        while ($line = fgets($output)) {
+//            $this->data .= $line;
+//        }
+//
+//        $this->data .= fgets($output);
 
-        return $this->update();
+//        return $this->update();
     }
 
     public function getFilename()

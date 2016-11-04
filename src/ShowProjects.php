@@ -21,7 +21,7 @@ class ShowProjects extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->showProjects($output);
+        $this->showProjectsTable($output);
     }
 
 }

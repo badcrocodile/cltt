@@ -28,7 +28,7 @@ class ArchiveProject extends Command
 
         $output->writeln('<info>Project archived!</info>');
 
-        $this->showProjects($output);
+        $this->showProjectsTable($output);
 
     }
 

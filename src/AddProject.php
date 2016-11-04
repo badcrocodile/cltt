@@ -34,7 +34,7 @@ class AddProject extends Command {
 
         $output->writeln((new OutputMessage('Project added'))->asInfo());
 
-        $this->showProjects($output);
+        $this->showProjectsTable($output);
     }
 
 }

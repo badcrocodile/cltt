@@ -29,8 +29,10 @@ try
     );
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS comments(
-            id INTEGER PRIMARY KEY,
-            entry_id INTEGER
+            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            entry_id INTEGER NOT NULL,
+            comment TEXT,
+            timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL
         )"
     );
 }

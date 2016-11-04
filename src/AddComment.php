@@ -7,9 +7,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class AddComment extends Command {
 
-    /**
-     *
-     */
     public function configure()
     {
         $this->setName('comment')
@@ -27,29 +24,22 @@ class AddComment extends Command {
         $comment = $input->getArgument('comment');
 
         // Need to get and set the currently running project
-        $running_timers = $this->database->fetchFirstRow("
-            SELECT entries.project_id, entries.start_time, projects.id, projects.name 
+        $attach_comment_to = $this->database->fetchFirstRow("
+            SELECT id 
             FROM entries 
-            INNER JOIN projects
-            ON entries.project_id = projects.id
             WHERE stop_time IS NULL
         ", "id");
 
-        var_dump($running_timers);
-
-        if($running_timers) {
+        if($attach_comment_to) {
             $this->database->query(
-                "insert into comments(entry_id, comment) values(:running_timers, :comment)",
-                compact('running_timers', 'comment')
+                "insert into comments(entry_id, comment) values(:attach_comment_to, :comment)",
+                compact('attach_comment_to', 'comment')
             );
 
             $output->writeln((new OutputMessage('Comment added to project'))->asInfo());
-        } else {
-            $output->writeln((new OutputMessage('No timers currently running to add a comment to'))->asInfo());
         }
-
-
-//        $this->showProjects($output);
+        else {
+            $output->writeln((new OutputMessage(' No timers running to add a comment to ¯\_(ツ)_/¯ '))->asError());
+        }
     }
-
 }

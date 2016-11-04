@@ -83,7 +83,9 @@ class ShowWeek extends ShowDates {
 
         $helper = $this->getHelper('question');
 
-        $question = new Question('Display next week or previous week? ([<info>n</info>]ext|[<info>p</info>]revious) ', 'null');
+        $output->writeln((new OutputMessage("")));
+
+        $question = new Question('([<info>n</info>]ext | [<info>p</info>]revious | [<info>e</info>]xport | [<info>q</info>]uit) => ', 'null');
 
         $paginate = $helper->ask($input, $output, $question);
 
@@ -96,6 +98,8 @@ class ShowWeek extends ShowDates {
                 $input->setArgument('week', $current_week->subWeek());
                 $this->execute($input, $output);
                 break;
+            case "a":
+                return;
         }
     }
 }
