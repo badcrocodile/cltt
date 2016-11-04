@@ -27,31 +27,6 @@ class StartProject extends Command {
         $project = $input->getArgument('project');
 
         if($project) {
-            $start_time = round(time()/60)*60; // round to nearest minute
-
-            $this->database->query('
-            insert into entries (project_id, start_time) 
-            values (:project, :start_time)
-            ',
-                compact('project','start_time')
-            );
-
-            $output->writeln((new OutputMessage('Timer started!'))->asInfo());
-        }
-
-        else {
-            $output->writeln((new OutputMessage(" What project do you want to start? "))->asQuestion());
-            $output->writeln((new OutputMessage("")));
-
-            $this->showProjectsList($output);
-
-            $helper = $this->getHelper('question');
-            $question = new Question("\n=> ", 'Project');
-
-            $project = $helper->ask($input, $output, $question);
-        }
-
-        if($project) {
             $project_name = $this->database->fetchFirstRow("
                 SELECT name 
                 FROM projects 
@@ -69,6 +44,36 @@ class StartProject extends Command {
 
             $output->writeln((new OutputMessage('Timer started for project "' . $project_name . '"'))->asInfo());
         }
+
+        else {
+            $output->writeln((new OutputMessage(" What project do you want to start? "))->asQuestion());
+            $output->writeln((new OutputMessage("")));
+
+            $this->showProjectsList($output);
+
+            $helper = $this->getHelper('question');
+            $question = new Question("\n=> ", 'Project');
+
+            $project = $helper->ask($input, $output, $question);
+
+            $project_name = $this->database->fetchFirstRow("
+                SELECT name 
+                FROM projects 
+                WHERE id = $project
+            ", "name");
+
+            $start_time = round(time()/60)*60; // round to nearest minute
+
+            $this->database->query('
+            insert into entries (project_id, start_time) 
+            values (:project, :start_time)
+            ',
+                compact('project','start_time')
+            );
+
+            $output->writeln((new OutputMessage('Timer started for project "' . $project_name . '"'))->asInfo());
+        }
+
     }
 
 }
