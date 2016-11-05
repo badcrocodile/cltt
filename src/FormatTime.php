@@ -23,6 +23,17 @@ class FormatTime {
     }
 
     /**
+     * Returns time elapsed since $start_time in seconds
+     *
+     * @param $start_time | Start time as timestamp
+     * @return int
+     */
+    public static function getElapsedTime($start_time)
+    {
+        return time() - $start_time;
+    }
+
+    /**
      * @param $total_seconds
      * @param bool $long_format
      * @return string

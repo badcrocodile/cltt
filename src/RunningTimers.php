@@ -27,8 +27,18 @@ class RunningTimers extends Command {
             WHERE stop_time IS NULL
         ", "name");
 
+        $running_start_time = $this->database->fetchFirstRow("
+            SELECT entries.project_id, entries.start_time, projects.id, projects.name 
+            FROM entries 
+            INNER JOIN projects
+            ON entries.project_id = projects.id
+            WHERE stop_time IS NULL
+        ", "start_time");
+
+        $elapsed_time = FormatTime::formatTotal(FormatTime::getElapsedTime($running_start_time));
+
         if($running_timers) {
-            $output->writeln((new OutputMessage($running_timers))->asInfo());
+            $output->writeln((new OutputMessage("You've been working on $running_timers for $elapsed_time"))->asInfo());
         } else {
             $output->writeln((new OutputMessage('No timers currently running'))->asInfo());
         }
