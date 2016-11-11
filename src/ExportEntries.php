@@ -14,7 +14,7 @@ class ExportEntries extends Command {
     }
 
     /**
-     * TODO: Should be more of a calendar format, like Klok.
+     * TODO: Should be more of a calendar format.
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @return int|null|void
@@ -106,6 +106,9 @@ class ExportEntries extends Command {
             $csv_row[$x] = $item;
         }
 
+        // TODO: Save to better location
+        // TODO: Prompt for file name (and location?)
+        // TODO: Set up some sort of user preference system so user can input their preferred save location and timezone and stuff.
         $fp = fopen('timesheet.csv', 'w');
 
         foreach ($csv_row as $fields) {
