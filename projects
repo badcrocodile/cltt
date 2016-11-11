@@ -19,6 +19,7 @@ try
             name TEXT
         )"
     );
+
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS entries(
             id INTEGER PRIMARY KEY,
@@ -28,6 +29,7 @@ try
             stop_time INTEGER
         )"
     );
+
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS comments(
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
