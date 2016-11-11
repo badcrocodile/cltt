@@ -41,17 +41,20 @@ class StopProject extends Command {
 
             $start_time = Carbon::createFromTimestamp($start_timestamp);
             $stop_time = Carbon::createFromTimestamp($stop_timestamp);
+            $session_length = $stop_time->timestamp - $start_timestamp;
+            var_dump($session_length);
 
             $is_same_day = $start_time->isSameDay($stop_time);
 
             if ($is_same_day) {
-                //            echo "\nIt's the same day.\n";
+                // We haven't run our timer past midnight so go ahead and log this entry
+                // echo "\nIt's the same day.\n";
 
                 $this->database->query('
                     UPDATE entries 
-                    SET stop_time = :stop_timestamp
+                    SET stop_time = :stop_timestamp, session_length = :session_length
                     WHERE stop_time IS NULL',
-                    compact('stop_timestamp')
+                    compact('stop_timestamp', 'session_length')
                 );
             }
             else {
@@ -61,16 +64,18 @@ class StopProject extends Command {
                     $start_new_day = Carbon::createFromTimestamp($start_timestamp)
                         ->endOfDay()
                         ->addSecond()->timestamp;
-                    //                echo "\nIt's a different day.\n";
-                    //                echo "Stop at midnight: " . Carbon::createFromTimestamp($stop_at_midnight) . "\n";
-                    //                echo "Start new day: " . Carbon::createFromTimestamp($start_new_day) . "\n";
+                    $session_length = $stop_at_midnight - $start_timestamp;
+
+                    // echo "\nIt's a different day.\n";
+                    // echo "Stop at midnight: " . Carbon::createFromTimestamp($stop_at_midnight) . "\n";
+                    // echo "Start new day: " . Carbon::createFromTimestamp($start_new_day) . "\n";
 
                     // Set stop time to 11:59pm
                     $this->database->query('
                         UPDATE entries 
-                        SET stop_time = :stop_at_midnight 
+                        SET stop_time = :stop_at_midnight, session_length = :session_length 
                         WHERE stop_time IS NULL',
-                        compact('stop_at_midnight')
+                        compact('stop_at_midnight', 'session_length')
                     );
 
                     // Insert new row
@@ -91,19 +96,19 @@ class StopProject extends Command {
 
                     $start_time = Carbon::createFromTimestamp($start_timestamp);
                     $stop_time = Carbon::createFromTimestamp($stop_timestamp);
+                    $session_length = $stop_timestamp - $start_timestamp;
 
                     $is_same_day = $start_time->isSameDay($stop_time);
 
-                    //                echo "Is same day: $is_same_day\n";
+                    // echo "Is same day: $is_same_day\n";
 
                     if ($is_same_day) {
-                        //                    echo "\nIt's finally the same day.\n";
-
+                        // echo "\nIt's finally the same day.\n";
                         $this->database->query('
                             UPDATE entries 
-                            SET stop_time = :stop_timestamp
+                            SET stop_time = :stop_timestamp, session_length = :session_length
                             WHERE stop_time IS NULL',
-                            compact('stop_timestamp')
+                            compact('stop_timestamp', 'session_length')
                         );
                     }
                 }

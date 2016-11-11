@@ -13,6 +13,7 @@ use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 
 class ShowTimes extends Command {
+    // TODO: table should have days as headers to be more like a calendar.
 
     public function configure()
     {
