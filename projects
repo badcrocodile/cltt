@@ -23,8 +23,9 @@ try
         "CREATE TABLE IF NOT EXISTS entries(
             id INTEGER PRIMARY KEY,
             project_id INTEGER,
-            start_time TEXT,
-            stop_time TEXT
+            comments TEXT,
+            start_time INTEGER,
+            stop_time INTEGER
         )"
     );
     $pdo->exec(
