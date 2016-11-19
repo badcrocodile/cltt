@@ -32,3 +32,9 @@ See what you've been working on for the week: `cltt week`. Use the prompts to go
 See what you've been working on for any particular week: `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
 
 Export your time entries (exports to csv): `cltt export` or `cltt export "last week"`, etc
+
+### TODO
+
+* Export to Google Docs
+* User preferences
+* Add comments to export file
