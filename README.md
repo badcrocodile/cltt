@@ -1,6 +1,8 @@
-# CLI Time Tracker
+# CLTT
 
-A Command Line Interface Time Tracker. This is a work in progress and is not stable.
+## Command Line Time Tracker. 
+
+Work in progress.
 
 ### Usage
 Clone the repo `git clone git@github.com:badcrocodile/clitt.git`
