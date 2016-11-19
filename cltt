@@ -39,7 +39,11 @@ try
 }
 catch(Exception $exception)
 {
-    echo "Could not connect to the database";
+    echo "Error connecting to the database\n";
+    echo "Message: " . $exception->getMessage() . "\n";
+    if(!extension_loaded('sqlite3')) {
+        echo "Looks like php-sqlite3 extension isn't available.\n";
+    }
     exit(1);
 }
 
