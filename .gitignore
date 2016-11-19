@@ -1,3 +1,5 @@
 db.sqlite
+sqlite.db
+timesheet.csv
 .idea
 tags
