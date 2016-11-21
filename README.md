@@ -43,3 +43,4 @@ Archive a project: `cltt archive [ID]`
 * Export to Google Docs
 * User preferences
 * Add comments to export file
+* Add ability to add entries on the fly
