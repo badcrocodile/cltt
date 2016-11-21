@@ -18,9 +18,9 @@ Create your first project: `cltt add "Project Name"`
 
 See what projects you have active: `cltt show`
 
-Start your timer: `cltt start` will list all projects available to you. If you know the ID of the project you'd like to work on, `cltt start 2` will start the timer immediately.
+Start your timer: `cltt start`. This will list all projects available to you. If you know the ID of the project you'd like to work on, `cltt start [project ID]` will start the timer immediately.
 
-Add some comments to the project you're working on: `cltt comment "Cleaning up database"`
+Add comments to the project you're working on: `cltt comment "Cleaning up database"`
 
 Stop your timer: `cltt stop`
 
@@ -44,3 +44,4 @@ Archive a project: `cltt archive [ID]`
 * User preferences
 * Add comments to export file
 * Add ability to add entries on the fly
+* Enhance `show-times`: If ran with no arguments show list of all projects, like `start`
