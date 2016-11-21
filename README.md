@@ -8,7 +8,7 @@ Work in progress.
 
 Clone the repo: `git clone git@github.com:badcrocodile/clitt.git`
 
-Symlink project executable (cltt) to somewhere in your $PATH: `ln -s /path/to/clitt/cltt /somewhere/in/your/path`
+Symlink project executable (cltt) to somewhere in your $PATH: `ln -s /path/to/clitt/cltt /somewhere/in/your/path/cltt`
 
 Initialize the database: `cltt`
 
