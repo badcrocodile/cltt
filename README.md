@@ -26,13 +26,13 @@ Stop your timer: `cltt stop`
 
 See what project is currently being timed: `cltt running`
 
-Edit a time entry (not fully implemented): `cltt edit [time entry ID]`
-
 See your entries for a specific project: `cltt show-times` or cltt `show-times [ID]`
 
 See what you've been working on for the week: `cltt week`. Use the prompts to go back/forward in time.
 
 See what you've been working on for any particular week: `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
+
+Edit a time entry: `cltt edit [time entry ID]`. The format for the new time is pretty flexible. 11:32pm or 11:32 pm or 11:32PM or 11:32pm. It's all the same.
 
 Export your time entries (exports to csv): `cltt export` or `cltt export "last week"`, etc
 
