@@ -44,4 +44,5 @@ Archive a project: `cltt archive [ID]`
 * User preferences
 * Add comments to export file
 * Add ability to add entries on the fly
+* Add ability to delete time entries
 * Enhance `show-times`: If ran with no arguments show list of all projects, like `start`
