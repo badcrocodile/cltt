@@ -17,7 +17,7 @@ class ShowTimes extends Command {
 
     public function configure()
     {
-        $this->setName('show-times')
+        $this->setName('times')
              ->setDescription('Display the times logged for a project.')
              ->addArgument('project', InputArgument::OPTIONAL);
 //             ->addOption('edit', 'e', InputOption::VALUE_REQUIRED, 'Edit a time entry', null);
