@@ -47,7 +47,6 @@ class EditTime extends Command {
         $new_time = $helper->ask($input, $output, $enter_new_time);
 
         $new_time_entry = Carbon::createFromFormat('M j, Y h:i a', $edit_row_date . " " . $new_time)->timestamp;
-        var_dump($new_time_entry);
 
         $output->writeln((new OutputMessage("\n$edit_column will be set to $new_time\n"))->asInfo());
 

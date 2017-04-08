@@ -14,6 +14,7 @@ class Command extends SymfonyCommand {
 
     /**
      * Command constructor.
+     *
      * @param \Acme\DatabaseAdapter $database
      */
     public function __construct(DatabaseAdapter $database)
@@ -79,7 +80,6 @@ class Command extends SymfonyCommand {
         $table = new Table($output);
 
         $table->setHeaders(['ID', 'Name'])->setRows($projects)->render();
-
     }
 
     /**

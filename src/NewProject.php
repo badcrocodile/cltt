@@ -15,8 +15,9 @@ class NewProject extends Command {
     public function configure()
     {
         $this->setName('new')
-            ->setDescription('Create a new project.')
+            ->setDescription('Create a new project. Command aliases: \'create\' | \'add\'')
             ->setAliases(['create', 'add'])
+            ->setHelp('The \'new\' command creates new projects for you to work on. It has 2 aliases: \'create\' & \'add\'.')
             ->addArgument('project', InputArgument::OPTIONAL);
     }
 
@@ -40,6 +41,7 @@ class NewProject extends Command {
             $this->showProjectsTable($output);
         } else {
             $helper = $this->getHelper('question');
+
             $question = new Question("New project name: ", 'New Project');
 
             $project = $helper->ask($input, $output, $question);
