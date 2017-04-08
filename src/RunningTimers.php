@@ -9,6 +9,7 @@ class RunningTimers extends Command {
     public function configure()
     {
         $this->setName('running')
+             ->setAliases(['status'])
              ->setDescription('Shows all running timers');
     }
 
