@@ -11,7 +11,9 @@ class ShowProjects extends Command
     public function configure()
     {
         $this->setName('show')
-            ->setDescription('Show all projects.');
+             ->setDescription('Show all active projects. Pass the --archived (-a) option to view all archived projects.')
+             ->setHelp('Display all active or archived projects.')
+             ->addOption('archived', 'a', InputOption::VALUE_NONE, 'Display archived projects');
     }
 
     /**
@@ -21,7 +23,17 @@ class ShowProjects extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->showProjectsTable($output);
+        $show_archived = $input->getOption('archived');
+
+        if($show_archived) {
+            $output->writeln((new OutputMessage("\nCurrently archived projects:\n "))->asInfo());
+
+            $this->showArchivedProjectsTable($output);
+        } else {
+            $output->writeln((new OutputMessage("\nCurrently active projects:\n "))->asInfo());
+
+            $this->showProjectsTable($output);
+        }
     }
 
 }
