@@ -1,16 +1,13 @@
-# CLI Time Tracker
+# CLTT
 
-A Command Line Interface Time Tracker. This is a work in progress and is not stable.
+**C**ommand **L**ine **T**ime **T**racker.
 
-### Built with
-* PHP/SQLite on the wonderful Symfony Console component
-* Carbon's PHP API extension for DateTime handling
+### What is it?
+A simple php command line utility to help you keep track of the shit you do all day.
 
 ### Features
-#### (some features may not be available yet)
-* Add comments to running timers
-* Archivable projects
-* Edit time entries after the fact
-* Displays entries by day, week or month
-* Simple interface for browsing weeks and months
-* Export entries as timesheets to csv or Google Docs
+* Add comments to timers as you work
+* Archive & restore projects anytime
+* Edit stop & start times when you forget
+* Simple interface for browsing through your time entries by projects or by time
+* Export timesheets as csv (pdf coming soon)
