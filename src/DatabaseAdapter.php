@@ -37,6 +37,7 @@ class DatabaseAdapter {
     public function fetchFirstRow($sql, $key)
     {
         $rows = $this->connection->prepare($sql);
+
         $rows->execute();
 
         return $this->row = $rows->fetch()["$key"];
@@ -51,7 +52,7 @@ class DatabaseAdapter {
      */
     public function fetchAll($tableName)
     {
-        return $this->connection->query('select * from ' . $tableName)->fetchAll();
+        return $this->connection->query('SELECT * FROM ' . $tableName)->fetchAll();
     }
 
     /**
@@ -61,7 +62,7 @@ class DatabaseAdapter {
      */
     public function fetchActiveProjects()
     {
-        return $this->connection->query('select id, name from projects where archived IS NULL')->fetchAll();
+        return $this->connection->query('SELECT id, name FROM projects WHERE archived IS NULL')->fetchAll();
     }
 
     /**
@@ -71,7 +72,51 @@ class DatabaseAdapter {
      */
     public function fetchArchivedProjects()
     {
-        return $this->connection->query('select id, name from projects where archived IS NOT NULL')->fetchAll();
+        return $this->connection->query('SELECT id, name FROM projects WHERE archived IS NOT NULL')->fetchAll();
+    }
+
+    /**
+     * Gets the name active project timer, if any
+     *
+     * @return string|false The name of the currently running project, if any
+     */
+    public function getRunningTimerName()
+    {
+        $query = $this->connection->query('
+            SELECT projects.name 
+            FROM projects 
+            INNER JOIN entries 
+            ON entries.project_id = projects.id 
+            WHERE stop_time IS NULL
+        ')->fetchObject();
+
+        if($query) {
+            return $query->name;
+        }
+
+        return false;
+    }
+
+    /**
+     * Gets the start time of the active project timer, if any
+     *
+     * @return string|false The start time of the currently running project, if any
+     */
+    public function getRunningTimerStartTime()
+    {
+        $query = $this->connection->query('
+            SELECT entries.start_time
+            FROM entries 
+            INNER JOIN projects
+            ON entries.project_id = projects.id 
+            WHERE stop_time IS NULL
+        ')->fetchObject();
+
+        if($query) {
+            return $query->start_time;
+        }
+
+        return false;
     }
 
     /**
