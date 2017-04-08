@@ -16,7 +16,7 @@ return array(
     'Acme\\EditTime' => $baseDir . '/src/EditTime.php',
     'Acme\\ExportEntries' => $baseDir . '/src/ExportEntries.php',
     'Acme\\FormatTime' => $baseDir . '/src/FormatTime.php',
-    'Acme\\NewProject' => $baseDir . '/src/CreateProject.php',
+    'Acme\\NewProject' => $baseDir . '/src/NewProject.php',
     'Acme\\OutputMessage' => $baseDir . '/src/OutputMessage.php',
     'Acme\\RunningTimers' => $baseDir . '/src/RunningTimers.php',
     'Acme\\Session' => $baseDir . '/src/Session.php',

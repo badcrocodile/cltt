@@ -33,75 +33,64 @@ class ShowTimes extends Command {
         $project_id = $input->getArgument('project');
 
         if($project_id) {
-            $sessions = $this->database->selectWhere("
-                SELECT id, project_id, start_time, stop_time 
-                FROM entries 
-                WHERE project_id = $project_id 
-                ORDER BY start_time ASC
-            ");
-
-            $session  = new Session($sessions);
-
-            $project_total = $session->formatProjectTotal();
-
-            $project_name  = $this->database->fetchFirstRow("
-                SELECT name 
-                FROM projects 
-                WHERE id = $project_id 
-                LIMIT 1"
-                , "name"
-            );
-
-            $table = new Table($output);
-
-            $table_headers[] = [new TableCell("<comment>Project: $project_name</comment>", ['colspan' => 5])];
-            $table_headers[] = ['ID', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
-
-            $table_rows   = $session->getSessionTimes();
-            $table_rows[] = new TableSeparator();
-            $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 4)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
-
-            $table->setHeaders($table_headers)->setRows($table_rows)->render();
+            $this->showTimes($project_id, $output);
         } else {
-            $output->writeln((new OutputMessage(" Show times for what project? "))->asQuestion());
-            $output->writeln((new OutputMessage("")));
+            $output->writeln((new OutputMessage("Show times for what project? "))->asInfo());
 
             $this->showProjectsList($output);
 
             $helper = $this->getHelper('question');
+
             $question = new Question("\n=> ", '1');
 
             $project_id = $helper->ask($input, $output, $question);
 
-            $sessions = $this->database->selectWhere("
-                SELECT id, project_id, start_time, stop_time 
-                FROM entries 
-                WHERE project_id = $project_id 
-                ORDER BY start_time ASC
-            ");
-
-            $session  = new Session($sessions);
-
-            $project_total = $session->formatProjectTotal();
-
-            $project_name  = $this->database->fetchFirstRow("
-                SELECT name 
-                FROM projects 
-                WHERE id = $project_id 
-                LIMIT 1"
-                , "name"
-            );
-
-            $table = new Table($output);
-
-            $table_headers[] = [new TableCell("<comment>Project: $project_name</comment>", ['colspan' => 5])];
-            $table_headers[] = ['ID', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
-
-            $table_rows   = $session->getSessionTimes();
-            $table_rows[] = new TableSeparator();
-            $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 4)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
-
-            $table->setHeaders($table_headers)->setRows($table_rows)->render();
+            $this->showTimes($project_id, $output);
         }
+    }
+
+    public function showTimes($project_id, $output)
+    {
+        $sessions = $this->database->selectWhere("
+            SELECT id, project_id, start_time, stop_time 
+            FROM entries 
+            WHERE project_id = $project_id 
+            ORDER BY start_time ASC
+        ");
+
+        // Handle currently running timers
+        foreach ($sessions as $key=>$value) {
+            if(is_null($sessions[$key]['stop_time'])) {
+                $sessions[$key]['stop_time'] = time();
+            }
+        }
+
+
+        $session  = new Session($sessions);
+
+        $project_total = $session->formatProjectTotal();
+
+        $project_name  = $this->database->fetchFirstRow("
+            SELECT name 
+            FROM projects 
+            WHERE id = $project_id 
+            LIMIT 1"
+            , "name"
+        );
+
+        $table = new Table($output);
+
+        $table_headers[] = [new TableCell("<comment>Project: $project_name</comment>", ['colspan' => 5])];
+
+        $table_headers[] = ['ID', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
+
+        $table_rows   = $session->getSessionTimes();
+
+        $table_rows[] = new TableSeparator();
+
+        $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 4)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
+
+        $table->setHeaders($table_headers)->setRows($table_rows)->render();
+
     }
 }

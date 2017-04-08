@@ -42,7 +42,6 @@ class StopProject extends Command {
             $start_time = Carbon::createFromTimestamp($start_timestamp);
             $stop_time = Carbon::createFromTimestamp($stop_timestamp);
             $session_length = $stop_time->timestamp - $start_timestamp;
-            var_dump($session_length);
 
             $is_same_day = $start_time->isSameDay($stop_time);
 

@@ -79,7 +79,7 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         'Acme\\EditTime' => __DIR__ . '/../..' . '/src/EditTime.php',
         'Acme\\ExportEntries' => __DIR__ . '/../..' . '/src/ExportEntries.php',
         'Acme\\FormatTime' => __DIR__ . '/../..' . '/src/FormatTime.php',
-        'Acme\\NewProject' => __DIR__ . '/../..' . '/src/CreateProject.php',
+        'Acme\\NewProject' => __DIR__ . '/../..' . '/src/NewProject.php',
         'Acme\\OutputMessage' => __DIR__ . '/../..' . '/src/OutputMessage.php',
         'Acme\\RunningTimers' => __DIR__ . '/../..' . '/src/RunningTimers.php',
         'Acme\\Session' => __DIR__ . '/../..' . '/src/Session.php',
