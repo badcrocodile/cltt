@@ -13,7 +13,9 @@ class ArchiveProject extends Command
     {
         $this->setName('archive')
              ->setDescription('Archive a project by its ID.')
-             ->addArgument('id', InputArgument::OPTIONAL);
+             ->setHelp('The archive command allows you archive a project. After archiving the project will no longer be visible in your list of available projects.')
+             ->addUsage('')
+             ->addArgument('id', InputArgument::OPTIONAL, 'The ID of the project to archive');
     }
 
     /**
@@ -42,12 +44,28 @@ class ArchiveProject extends Command
         }
     }
 
+    /**
+     * Handles archiving of projects
+     * Which basically means setting the archived flag to 1 on the projects table
+     *
+     * @param                 $id
+     * @param OutputInterface $output
+     */
     public function archiveProject($id, OutputInterface $output)
     {
-        $this->database->query('delete from projects where id = :id', compact('id'));
+        // TODO: Check for running timers before archiving the project
+        /**
+         * Before we archive a project we should stop any running timers for it
+         */
 
-        $output->writeln('<info>Project archived!</info>');
+//        $this->database->query('delete from projects where id = :id', compact('id'));
+        $archived = 1;
 
-        $this->showProjectsTable($output);
+        $this->database->query('
+            UPDATE projects 
+            SET archived = :archived 
+            WHERE id = :id',
+            compact('archived', 'id')
+        );
     }
 }
