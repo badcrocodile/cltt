@@ -16,6 +16,7 @@ class NewProject extends Command {
     {
         $this->setName('new')
             ->setDescription('Create a new project.')
+            ->setAliases(['create', 'add'])
             ->addArgument('project', InputArgument::OPTIONAL);
     }
 
