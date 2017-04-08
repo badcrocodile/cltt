@@ -16,16 +16,16 @@ try
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS projects(
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            name TEXT,
-            created DEFAULT CURRENT_TIMESTAMP NOT NULL
+            name TEXT
         )"
     );
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS entries(
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             project_id INTEGER,
-            start_time TEXT,
-            stop_time TEXT
+            start_time INTEGER,
+            stop_time INTEGER,
+            session_length INTEGER
         )"
     );
     $pdo->exec(

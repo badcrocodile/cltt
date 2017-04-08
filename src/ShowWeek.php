@@ -51,9 +51,25 @@ class ShowWeek extends ShowDates {
             BETWEEN $date_week_start AND $date_week_end
         ");
 
+        $comments = $this->database->selectWhere("
+            SELECT comments.comment, entries.id, projects.name
+            FROM comments
+            LEFT JOIN entries
+            ON entries.id = comments.entry_id
+            LEFT JOIN projects
+            ON entries.project_id = projects.id 
+            WHERE stop_time 
+            BETWEEN $date_week_start AND $date_week_end
+        ");
+
+
         $session = new Session($sessions);
 
-        $table = new Table($output);
+        $sessions_table = new Table($output);
+
+        $comments_table = new Table($output);
+
+        
 
         $project_total = $session->formatProjectTotal();
 
@@ -66,7 +82,24 @@ class ShowWeek extends ShowDates {
         $table_rows[] = new TableSeparator();
         $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 5)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
 
-        $table->setHeaders($table_headers)->setRows($table_rows)->render();
+        $sessions_table->setHeaders($table_headers)->setRows($table_rows)->render();
+
+        $comments_table_header_message = (new OutputMessage("Comments for week of " . (new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString()))->asComment();
+
+        $x = 0;
+        $comment_array = [];
+        foreach($comments as $comment) {
+            $comment_array[$x]['id'] = $comment['id'];
+            $comment_array[$x]['project'] = $comment['name'];
+            $comment_array[$x]['comment'] = $comment['comment'];
+            $x++;
+        }
+
+        $comments_table_headers[] = [new TableCell($comments_table_header_message, ['colspan' => 3])];
+        $comments_table_headers[] = ['ID', 'Project', 'Comment'];
+        $comments_table_rows = $comments_table;
+
+        $comments_table->setHeaders($comments_table_headers)->setRows($comment_array)->render();
 
         $this->paginate($input, $output, $date_week);
     }
