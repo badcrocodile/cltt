@@ -52,6 +52,7 @@ $dbAdapter = new Acme\DatabaseAdapter($pdo);
 $app->add(new Acme\AddComment($dbAdapter));
 $app->add(new Acme\NewProject($dbAdapter));
 $app->add(new Acme\ArchiveProject($dbAdapter));
+$app->add(new Acme\RestoreProject($dbAdapter));
 $app->add(new Acme\EditTime($dbAdapter));
 $app->add(new Acme\DeleteTime($dbAdapter));
 $app->add(new Acme\ExportEntries($dbAdapter));
