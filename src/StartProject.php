@@ -3,9 +3,7 @@
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Question\Question;
 
 class StartProject extends Command {
@@ -27,25 +25,8 @@ class StartProject extends Command {
         $project = $input->getArgument('project');
 
         if($project) {
-            $project_name = $this->database->fetchFirstRow("
-                SELECT name 
-                FROM projects 
-                WHERE id = $project
-            ", "name");
-
-            $start_time = round(time()/60)*60; // round to nearest minute
-
-            $this->database->query('
-            insert into entries (project_id, start_time) 
-            values (:project, :start_time)
-            ',
-                compact('project','start_time')
-            );
-
-            $output->writeln((new OutputMessage('Timer started for project "' . $project_name . '"'))->asInfo());
-        }
-
-        else {
+            $this->startProject($project, $output);
+        } else {
             $output->writeln((new OutputMessage(" What project do you want to start? "))->asQuestion());
             $output->writeln((new OutputMessage("")));
 
@@ -56,24 +37,28 @@ class StartProject extends Command {
 
             $project = $helper->ask($input, $output, $question);
 
-            $project_name = $this->database->fetchFirstRow("
+            $this->startProject($project, $output);
+        }
+    }
+
+    public function startProject($project, OutputInterface $output)
+    {
+        $project_name = $this->database->fetchFirstRow("
                 SELECT name 
                 FROM projects 
                 WHERE id = $project
             ", "name");
 
-            $start_time = round(time()/60)*60; // round to nearest minute
+        $start_time = round(time()/60)*60; // round to nearest minute
 
-            $this->database->query('
+        $this->database->query('
             insert into entries (project_id, start_time) 
             values (:project, :start_time)
             ',
-                compact('project','start_time')
-            );
+            compact('project','start_time')
+        );
 
-            $output->writeln((new OutputMessage('Timer started for project "' . $project_name . '"'))->asInfo());
-        }
-
+        $output->writeln((new OutputMessage('Timer started for project "' . $project_name . '"'))->asInfo());
     }
 
 }

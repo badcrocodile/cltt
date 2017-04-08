@@ -9,6 +9,7 @@ class RunningTimers extends Command {
     public function configure()
     {
         $this->setName('running')
+             ->setAliases(['status'])
              ->setDescription('Shows all running timers');
     }
 
@@ -19,6 +20,7 @@ class RunningTimers extends Command {
      */
     public function execute(InputInterface $input, OutputInterface $output) 
     {
+        // TODO: Extract functionality of checking for running timers into it's own class. We can use this in other places
         $running_timers = $this->database->fetchFirstRow("
             SELECT entries.project_id, entries.start_time, projects.id, projects.name 
             FROM entries 

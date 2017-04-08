@@ -28,20 +28,20 @@ class ExportEntries extends Command {
 
         $projects = $this->database->fetchAll('projects');
 
-        $days_of_week['monday']['start'] = (new Carbon($start_of_week));
-        $days_of_week['monday']['stop'] = (new Carbon($days_of_week['monday']['start']))->endOfDay();
-        $days_of_week['tuesday']['start'] = (new Carbon($days_of_week['monday']['start']))->addDay();
-        $days_of_week['tuesday']['stop'] = (new Carbon($days_of_week['tuesday']['start']))->endOfDay();
+        $days_of_week['monday']['start']    = (new Carbon($start_of_week));
+        $days_of_week['monday']['stop']     = (new Carbon($days_of_week['monday']['start']))->endOfDay();
+        $days_of_week['tuesday']['start']   = (new Carbon($days_of_week['monday']['start']))->addDay();
+        $days_of_week['tuesday']['stop']    = (new Carbon($days_of_week['tuesday']['start']))->endOfDay();
         $days_of_week['wednesday']['start'] = (new Carbon($days_of_week['tuesday']['start']))->addDay();
-        $days_of_week['wednesday']['stop'] = (new Carbon($days_of_week['wednesday']['start']))->endOfDay();
-        $days_of_week['thursday']['start'] = (new Carbon($days_of_week['wednesday']['start']))->addDay();
-        $days_of_week['thursday']['stop'] = (new Carbon($days_of_week['thursday']['start']))->endOfDay();
-        $days_of_week['friday']['start'] = (new Carbon($days_of_week['thursday']['start']))->addDay();
-        $days_of_week['friday']['stop'] = (new Carbon($days_of_week['friday']['start']))->endOfDay();
-        $days_of_week['saturday']['start'] = (new Carbon($days_of_week['friday']['start']))->addDay();
-        $days_of_week['saturday']['stop'] = (new Carbon($days_of_week['saturday']['start']))->endOfDay();
-        $days_of_week['sunday']['start'] = (new Carbon($days_of_week['saturday']['start']))->addDay();
-        $days_of_week['sunday']['stop'] = (new Carbon($days_of_week['sunday']['start']))->endOfDay();
+        $days_of_week['wednesday']['stop']  = (new Carbon($days_of_week['wednesday']['start']))->endOfDay();
+        $days_of_week['thursday']['start']  = (new Carbon($days_of_week['wednesday']['start']))->addDay();
+        $days_of_week['thursday']['stop']   = (new Carbon($days_of_week['thursday']['start']))->endOfDay();
+        $days_of_week['friday']['start']    = (new Carbon($days_of_week['thursday']['start']))->addDay();
+        $days_of_week['friday']['stop']     = (new Carbon($days_of_week['friday']['start']))->endOfDay();
+        $days_of_week['saturday']['start']  = (new Carbon($days_of_week['friday']['start']))->addDay();
+        $days_of_week['saturday']['stop']   = (new Carbon($days_of_week['saturday']['start']))->endOfDay();
+        $days_of_week['sunday']['start']    = (new Carbon($days_of_week['saturday']['start']))->addDay();
+        $days_of_week['sunday']['stop']     = (new Carbon($days_of_week['sunday']['start']))->endOfDay();
 
         $header_row = array("Project", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Total");
 
