@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Acme\\AddComment' => $baseDir . '/src/AddComment.php',
+    'Acme\\AddTime' => $baseDir . '/src/AddTime.php',
     'Acme\\ArchiveProject' => $baseDir . '/src/ArchiveProject.php',
     'Acme\\CalculateTime' => $baseDir . '/src/CalculateTime.php',
     'Acme\\Command' => $baseDir . '/src/Command.php',
