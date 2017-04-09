@@ -70,6 +70,7 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
 
     public static $classMap = array (
         'Acme\\AddComment' => __DIR__ . '/../..' . '/src/AddComment.php',
+        'Acme\\AddTime' => __DIR__ . '/../..' . '/src/AddTime.php',
         'Acme\\ArchiveProject' => __DIR__ . '/../..' . '/src/ArchiveProject.php',
         'Acme\\CalculateTime' => __DIR__ . '/../..' . '/src/CalculateTime.php',
         'Acme\\Command' => __DIR__ . '/../..' . '/src/Command.php',

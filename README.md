@@ -6,13 +6,14 @@
 A simple php command line utility to help you keep track of the shit you do all day.
 
 ### Features
-* Add comments to timers as you work
-* Archive & restore projects anytime
-* Edit stop & start times when you forget
-* Simple interface for browsing through your time entries by projects or by time
+* Add comments to timers as you work to help keep track of work done
+* Edit times when you forget to start or stop timers
+* Add new time entries on the fly
+* Simple interface for browsing through your time entries
 * Export timesheets as csv (pdf coming soon)
+* Archive & restore projects anytime
 
-### Usage
+### Setup
 Clone the repo: `git clone git@github.com:badcrocodile/clitt.git`
 
 Symlink cltt to somewhere in your $PATH: `ln -s /path/to/clitt/cltt /somewhere/in/your/path/cltt`
@@ -21,33 +22,40 @@ Initialize the database: `cltt`
 
 Check the time that php-cli has loaded. Run this in a console, adjust as necessary: `php -r "echo strftime('%c');"`
 
-Create your first project: `cltt add "Project Name"`
+### Usage
+Create a project: `cltt add "Project Name"`
 
-See what projects you have active: `cltt show`
+Archive a project: `cltt archive [ID]` or `cltt archive`
 
-Start your timer: `cltt start`. This will list all projects available to you. If you know the ID of the project you'd like to work on, `cltt start [project ID]` will start the timer immediately.
+Restore a project: `cltt restore [ID]` or `cltt restore`
 
-Add comments to the project you're working on: `cltt comment "Cleaning up database"`
+Show active projects: `cltt show`
+
+Show archived projects: `cltt show -a, --archived`
+
+Start a timer: `cltt start` or `cltt start [project ID]`
+
+Add comments to the active timer: `cltt comment "Cleaning up database"`
+
+See what project is currently being timed: `cltt running` or `cltt status`
 
 Stop your timer: `cltt stop`
 
-See what project is currently being timed: `cltt running`
-
-See your entries for a specific project: `cltt show-times` or cltt `show-times [ID]`
-
-See what you've been working on for the week: `cltt week`. Use the prompts to go back/forward in time.
-
-See what you've been working on for any particular week: `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
+Add a new time entry: `cltt add-time`
 
 Edit a time entry: `cltt edit [time entry ID]`. The format for the new time is pretty flexible. 11:32pm or 11:32 pm or 11:32PM or 11:32pm. It's all the same.
 
-Export your time entries (exports to csv): `cltt export` or `cltt export "last week"`, etc
+List entries for a specific project: `cltt times` or `cltt times [ID]`
 
-Archive a project: `cltt archive [ID]`
+List entries for the week: `cltt week`. Use the prompts to go back/forward in time.
+
+List entries for any particular week: `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
+
+Export entries as csv: `cltt export` or `cltt export "last week"`, etc
 
 ### TODO
 
 * Export to Google Docs
 * User preferences
 * Add comments to export file
-* Add ability to add entries on the fly
+* Add ability to start a project "x" minutes ago

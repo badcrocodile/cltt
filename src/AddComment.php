@@ -10,7 +10,7 @@ class AddComment extends Command {
     public function configure()
     {
         $this->setName('comment')
-            ->setDescription('Add a comment.')
+            ->setDescription('Add a comment to a running timer.')
             ->addArgument('comment', InputArgument::REQUIRED);
     }
 

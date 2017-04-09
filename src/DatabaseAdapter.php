@@ -26,6 +26,11 @@ class DatabaseAdapter {
         return $this->connection->prepare($sql)->execute($parameters);
     }
 
+    public function lastInsertedRowID()
+    {
+        return $this->connection->lastInsertId();
+    }
+
     /**
      * Gets the first results row returned by query
      *
