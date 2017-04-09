@@ -35,7 +35,7 @@ class StartProject extends Command {
             $this->showProjectsList($output);
 
             $helper = $this->getHelper('question');
-            $question = new Question("\n=> ");
+            $question = new Question("\nProject ID => ");
 
             $project = $helper->ask($input, $output, $question);
 
@@ -51,11 +51,12 @@ class StartProject extends Command {
     public function startProject($project, OutputInterface $output)
     {
         // TODO: Add method to command.php to handle converting project ID to project name. Could use in a number of locations
-        $project_name = $this->database->fetchFirstRow("
-                SELECT name 
-                FROM projects 
-                WHERE id = $project
-            ", "name");
+        $project_name = $this->database->projectIDtoName($project);
+//        $project_name = $this->database->fetchFirstRow("
+//                SELECT name
+//                FROM projects
+//                WHERE id = $project
+//            ", "name");
 
         $start_time = round(time()/60)*60; // round to nearest minute
 
@@ -66,6 +67,7 @@ class StartProject extends Command {
             compact('project','start_time')
         );
 
+        $output->writeln((new OutputMessage(''))->asInfo());
         $output->writeln((new OutputMessage('Timer started for project "' . $project_name . '"'))->asInfo());
     }
 

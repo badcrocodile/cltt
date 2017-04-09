@@ -82,6 +82,7 @@ class AddTime extends Command
     {
         // TODO: Convert project ID to project name
         $project = $this->project;
+        $project_name = $this->database->projectIDtoName($project);
 
         $entry_start_time = strtotime($this->date . " " . $this->start_time);
         $entry_stop_time = strtotime($this->date . " " . $this->stop_time);
@@ -100,7 +101,6 @@ class AddTime extends Command
             );
 
             $last_inserted_row = $this->database->lastInsertedRowID();
-            var_dump($last_inserted_row);
 
             // Insert stop time
             // Need to get the ID of the last row inserted from above
@@ -111,7 +111,8 @@ class AddTime extends Command
                 compact('entry_stop_time', 'session_length', 'last_inserted_row')
             );
 
-            $output->writeln((new OutputMessage('New time recorded on ' . date('m/d/Y', $start_time->timestamp) . ' from ' . date('g:i', $start_time->timestamp) . ' to ' . date('g:i', $stop_time->timestamp) . ' for project ' . $project . '.'))->asInfo());
+            $output->writeln('');
+            $output->writeln((new OutputMessage('New time recorded on ' . date('m/d/Y', $start_time->timestamp) . ' from ' . date('g:ia', $start_time->timestamp) . ' to ' . date('g:ia', $stop_time->timestamp) . ' for project ' . $project . ' (' . $project_name . ').'))->asInfo());
         } else {
             $output->writeln((new OutputMessage('Stop time cannot come before start time :(. This is not how the world works.'))->asError());
         }

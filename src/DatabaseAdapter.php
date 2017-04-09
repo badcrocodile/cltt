@@ -17,6 +17,8 @@ class DatabaseAdapter {
     }
 
     /**
+     * Executes general queries
+     *
      * @param $sql
      * @param null $parameters
      * @return bool
@@ -26,6 +28,12 @@ class DatabaseAdapter {
         return $this->connection->prepare($sql)->execute($parameters);
     }
 
+
+    /**
+     * Returns ID of last inserted row
+     *
+     * @return string The ID of the last inserted row
+     */
     public function lastInsertedRowID()
     {
         return $this->connection->lastInsertId();
@@ -37,7 +45,7 @@ class DatabaseAdapter {
      * @param $sql string The query string
      * @param $key string The key to return
      *
-     * @return mixed
+     * @return mixed The first results row returned by query
      */
     public function fetchFirstRow($sql, $key)
     {
@@ -78,6 +86,29 @@ class DatabaseAdapter {
     public function fetchArchivedProjects()
     {
         return $this->connection->query('SELECT id, name FROM projects WHERE archived IS NOT NULL')->fetchAll();
+    }
+
+    /**
+     * Translate a project ID into proper name
+     *
+     * @param $project_id
+     *
+     * @return string The name of the project
+     */
+    public function projectIDtoName($project_id)
+    {
+        $project_name = $this->fetchFirstRow("
+            SELECT name 
+            FROM projects 
+            WHERE id = $project_id",
+            "name"
+        );
+
+        if($project_name) {
+            return $project_name;
+        }
+
+        return false;
     }
 
     /**
