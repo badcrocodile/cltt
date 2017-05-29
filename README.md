@@ -31,7 +31,7 @@ Any time that can be parsed by php's strtotime will work.
 
 **Add comments to the active timer:** `cltt comment "Cleaning up database"`
 
-**Stop your timer:** `cltt stop`. Optionally accepts 3rd argument for stopping your timer a certain amount of "time ago". See Start a timer above for details.
+**Stop your timer:** `cltt stop`. Optionally accepts an argument for stopping your timer a certain amount of "time ago". See Start a timer above for details.
 
 **Edit a time entry:** `cltt edit [time entry ID]`. The format for the new time is pretty flexible. 11:32pm or 11:32 pm or 11:32PM or 11:32pm. It's all the same.
 
@@ -46,7 +46,6 @@ Any time that can be parsed by php's strtotime will work.
 **See what project is currently being timed:** `cltt running` or `cltt status`
 
 **Add a new time entry:** `cltt add-time`
-
 
 **List entries for a specific project:** `cltt times` or `cltt times [ID]`
 
