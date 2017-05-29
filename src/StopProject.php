@@ -12,7 +12,8 @@ class StopProject extends Command {
     public function configure()
     {
         $this->setName('stop')
-             ->setDescription('Stop the timer on a project.');
+             ->setDescription('Stop the timer on a project. Accepts a second argument of time-ago to adjust for situations where you forget to stop your timer.')
+             ->addArgument('time_adjustment', InputArgument::OPTIONAL);
     }
 
     /**
@@ -22,6 +23,8 @@ class StopProject extends Command {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $time_adjustment = $this->getTimeAdjustment($input);
+
         $project_id = $this->database->fetchFirstRow('
             SELECT project_id
             FROM entries 
@@ -37,7 +40,11 @@ class StopProject extends Command {
         );
 
         if ($start_timestamp) {
-            $stop_timestamp = round(time() / 60) * 60; // round to nearest minute
+            if(isset($time_adjustment)) {
+                $stop_timestamp = round(strtotime($time_adjustment)/60)*60;
+            } else {
+                $stop_timestamp = round(time()/60)*60;
+            }
 
             $start_time = Carbon::createFromTimestamp($start_timestamp);
             $stop_time = Carbon::createFromTimestamp($stop_timestamp);
@@ -119,5 +126,23 @@ class StopProject extends Command {
         else {
             $output->writeln((new OutputMessage(' No timers currently running ಠ_ಠ '))->asError());
         }
+    }
+
+    /**
+     * Determines status of time_adjustment argument
+     *
+     * @param InputInterface $input
+     *
+     * @return mixed|null
+     */
+    private function getTimeAdjustment(InputInterface $input)
+    {
+        $time_adjustment = $input->getArgument('time_adjustment');
+
+        if($time_adjustment) {
+            return $input->getArgument('time_adjustment');
+        }
+
+        return null;
     }
 }

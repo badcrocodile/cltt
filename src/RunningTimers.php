@@ -5,6 +5,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class RunningTimers extends Command {
+    // TODO: Account for active timers
 
     public function configure()
     {

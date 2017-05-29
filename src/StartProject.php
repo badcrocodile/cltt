@@ -12,7 +12,7 @@ class StartProject extends Command {
     public function configure()
     {
         $this->setName('start')
-            ->setDescription('Begin timing a project')
+            ->setDescription('Begin timing a project. Accepts a second argument of time-ago to adjust for situations where you forget to start your timer.')
             ->addArgument('project', InputArgument::OPTIONAL)
             ->addArgument('time_adjustment', InputArgument::OPTIONAL);
     }
@@ -25,7 +25,6 @@ class StartProject extends Command {
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        // TODO: It would be nice to add an argument allowing user to "start" a project "x" minutes ago. EX: cltt start "1 hour ago"
         $project = $input->getArgument('project');
 
         $time_adjustment = $this->getTimeAdjustment($input);

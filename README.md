@@ -23,35 +23,38 @@ Initialize the database: `cltt`
 Check the time that php-cli has loaded. Run this in a console, adjust as necessary: `php -r "echo strftime('%c');"`
 
 ### Usage
-Create a project: `cltt add "Project Name"`
+**Create a project:** `cltt add "Project Name"`
 
-Archive a project: `cltt archive [ID]` or `cltt archive`
+**Start a timer:** `cltt start` or `cltt start [project ID]`. If you find that you've been working on a project and have forgotten
+to start a timer, pass a 3rd argument representing when the timer should have been started. For example: `cltt start 3 "15 minutes ago"`. 
+Any time that can be parsed by php's strtotime will work.
 
-Restore a project: `cltt restore [ID]` or `cltt restore`
+**Add comments to the active timer:** `cltt comment "Cleaning up database"`
 
-Show active projects: `cltt show`
+**Stop your timer:** `cltt stop`. Optionally accepts 3rd argument for stopping your timer a certain amount of "time ago". See Start a timer above for details.
 
-Show archived projects: `cltt show -a, --archived`
+**Edit a time entry:** `cltt edit [time entry ID]`. The format for the new time is pretty flexible. 11:32pm or 11:32 pm or 11:32PM or 11:32pm. It's all the same.
 
-Start a timer: `cltt start` or `cltt start [project ID]`
+**Archive a project:** `cltt archive [ID]` or `cltt archive`
 
-Add comments to the active timer: `cltt comment "Cleaning up database"`
+**Restore a project:** `cltt restore [ID]` or `cltt restore`
 
-See what project is currently being timed: `cltt running` or `cltt status`
+**Show active projects:** `cltt show`
 
-Stop your timer: `cltt stop`
+**Show archived projects:** `cltt show -a, --archived`
 
-Add a new time entry: `cltt add-time`
+**See what project is currently being timed:** `cltt running` or `cltt status`
 
-Edit a time entry: `cltt edit [time entry ID]`. The format for the new time is pretty flexible. 11:32pm or 11:32 pm or 11:32PM or 11:32pm. It's all the same.
+**Add a new time entry:** `cltt add-time`
 
-List entries for a specific project: `cltt times` or `cltt times [ID]`
 
-List entries for the week: `cltt week`. Use the prompts to go back/forward in time.
+**List entries for a specific project:** `cltt times` or `cltt times [ID]`
 
-List entries for any particular week: `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
+**List entries for the week:** `cltt week`. Use the prompts to go back/forward in time.
 
-Export entries as csv: `cltt export` or `cltt export "last week"`, etc
+**List entries for any particular week:** `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
+
+**Export entries as csv:** `cltt export` or `cltt export "last week"`, etc
 
 ### TODO
 
