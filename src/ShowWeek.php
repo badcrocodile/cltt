@@ -69,8 +69,6 @@ class ShowWeek extends ShowDates {
 
         $comments_table = new Table($output);
 
-        
-
         $project_total = $session->formatProjectTotal();
 
         $table_header_message = (new OutputMessage((new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString()))->asComment();

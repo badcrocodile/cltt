@@ -80,7 +80,6 @@ class AddTime extends Command
 
     private function addEntry(InputInterface $input, OutputInterface $output)
     {
-        // TODO: Convert project ID to project name
         $project = $this->project;
         $project_name = $this->database->projectIDtoName($project);
 
