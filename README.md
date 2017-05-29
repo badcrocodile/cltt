@@ -60,4 +60,3 @@ Any time that can be parsed by php's strtotime will work.
 * Export to Google Docs
 * User preferences
 * Add comments to export file
-* Add ability to start a project "x" minutes ago
