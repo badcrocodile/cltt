@@ -5,13 +5,17 @@
 ### What is it?
 A simple php command line utility to help you keep track of the shit you do all day.
 
-### Features
-* Add comments to timers as you work to help keep track of work done
-* Edit times when you forget to start or stop timers
-* Add new time entries on the fly
-* Simple interface for browsing through your time entries
-* Export timesheets as csv (pdf coming soon)
-* Archive & restore projects anytime
+### Highlights
+* Create unlimited projects: `cltt add "Acme Widgets"`
+* Easily start tracking time: `cltt start`
+* Forget to start a timer? No problem: `cltt start "45 minutes ago"`
+* Keep track of your work by adding comments to the task you are working on: `cltt comment "Working on feature A"`
+* Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
+* Show all times logged for a specific project: `cltt times`
+* Add new time entries on the fly `cltt add-time` and follow the prompts
+* Easily browse through your time entries: `cltt week`
+* Export timesheets as csv (pdf coming soon): `cltt export`. Optionally specify a week to export: `cltt export "last week"`
+* Archive & restore projects anytime `cltt archive` and `cltt restore`
 
 ### Setup
 Clone the repo: `git clone git@github.com:badcrocodile/clitt.git`
