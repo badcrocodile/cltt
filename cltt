@@ -58,6 +58,7 @@ $app->add(new Acme\EditTime($dbAdapter));
 $app->add(new Acme\DeleteTime($dbAdapter));
 $app->add(new Acme\ExportEntries($dbAdapter));
 $app->add(new Acme\RunningTimers($dbAdapter));
+$app->add(new Acme\ShowDay($dbAdapter));
 $app->add(new Acme\ShowProjects($dbAdapter));
 $app->add(new Acme\ShowTimes($dbAdapter));
 $app->add(new Acme\ShowWeek($dbAdapter));
