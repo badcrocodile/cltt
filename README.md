@@ -13,7 +13,7 @@ A simple php command line utility to help you keep track of the shit you do all 
 * Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
 * Show all times logged for a specific project: `cltt times`
 * Add new time entries on the fly `cltt add-time` and follow the prompts
-* Easily browse through your time entries: `cltt week`
+* Easily browse through your time entries: `cltt day` or `cltt week`
 * Export timesheets as csv (pdf coming soon): `cltt export`. Optionally specify a week to export: `cltt export "last week"`
 * Archive & restore projects anytime `cltt archive` and `cltt restore`
 
@@ -57,11 +57,15 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 
 **List entries for a specific project:** `cltt times` or `cltt times [ID]`
 
-**List entries for the week:** `cltt week`.
+**List entries for the day:** `cltt day`
+* A second parameter can be used to specify which day. Examples being "yesterday", "last saturday", etc
+* Use the prompts to go back/forward in time.
+* 'e' will export the currently displayed day timesheet
+
+**List entries for the week:** `cltt week`
+* A second parameter can be used to specify which day/week. Examples being "last week", "2 weeks ago", etc
 * Use the prompts to go back/forward in time.
 * 'e' will export the currently displayed week timesheet
-
-**List entries for any particular week:** `cltt week "last week"` or `cltt week 4 weeks ago` or `cltt week "last year"`, etc
 
 **Export entries as csv:** `cltt export` or `cltt export "last week"`, etc
 * You can also use the `cltt week` interface to browse back and forth and execute the 'Export' command (e) from the displayed week.
