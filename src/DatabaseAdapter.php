@@ -75,11 +75,7 @@ class DatabaseAdapter {
      */
     public function fetchActiveProjects()
     {
-        return $this->connection->query("
-            SELECT id, name 
-            FROM projects 
-            WHERE archived IS NULL")
-            ->fetchAll();
+        return $this->connection->query(" SELECT id, name FROM projects WHERE archived IS NULL") ->fetchAll();
     }
 
     /**
@@ -89,11 +85,7 @@ class DatabaseAdapter {
      */
     public function fetchArchivedProjects()
     {
-        return $this->connection->query("
-            SELECT id, name 
-            FROM projects 
-            WHERE archived IS NOT NULL")
-            ->fetchAll();
+        return $this->connection->query(" SELECT id, name FROM projects WHERE archived IS NOT NULL") ->fetchAll();
     }
 
     /**
@@ -109,7 +101,7 @@ class DatabaseAdapter {
     {
         if($currently_running == true) {
             return $this->connection->query("
-                SELECT comments.comment, entries.id, projects.name
+                SELECT entries.id, projects.name, comments.comment
                 FROM comments
                 LEFT JOIN entries
                 ON entries.id = comments.entry_id
@@ -122,7 +114,7 @@ class DatabaseAdapter {
             ->fetchAll();
         } else {
             return $this->connection->query("
-                SELECT comments.comment, entries.id, projects.name
+                SELECT entries.id, projects.name, comments.comment
                 FROM comments
                 LEFT JOIN entries
                 ON entries.id = comments.entry_id
@@ -150,6 +142,19 @@ class DatabaseAdapter {
                 LEFT JOIN projects
                 ON entries.project_id = projects.id 
                 WHERE entries.stop_time IS NULL
+        ")
+        ->fetchAll();
+    }
+
+    public function fetchSessionsByDate($date_start, $date_end)
+    {
+        return $this->connection->query("
+            SELECT entries.id, project_id, start_time, stop_time, name
+            FROM entries
+            JOIN projects
+            ON entries.project_id = projects.id
+            WHERE stop_time 
+            BETWEEN $date_start AND $date_end
         ")
         ->fetchAll();
     }

@@ -37,26 +37,11 @@ class ShowWeek extends ShowDates {
         $date_week_start    = (new Carbon($date_week))->startOfWeek()->timestamp;
         $date_week_end      = (new Carbon($date_week))->endOfWeek()->timestamp;
 
-        $sessions = $this->database->selectWhere("
-            SELECT entries.id, project_id, start_time, stop_time, name
-            FROM entries
-            JOIN projects
-            ON entries.project_id = projects.id
-            WHERE stop_time 
-            BETWEEN $date_week_start AND $date_week_end
-        ");
+        // Get all sessions during week
+        $sessions = $this->database->fetchSessionsByDate($date_week_start, $date_week_end);
 
-        $comments = $this->database->selectWhere("
-            SELECT comments.comment, entries.id, projects.name
-            FROM comments
-            LEFT JOIN entries
-            ON entries.id = comments.entry_id
-            LEFT JOIN projects
-            ON entries.project_id = projects.id 
-            WHERE stop_time 
-            BETWEEN $date_week_start AND $date_week_end
-        ");
-
+        // Get all comments attached to those sessions
+        $comments = $this->database->fetchCommentsByDate($date_week_start, $date_week_end);
 
         $session = new Session($sessions);
 
@@ -68,31 +53,19 @@ class ShowWeek extends ShowDates {
 
         $table_header_message = (new OutputMessage((new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString()))->asComment();
 
-        $table_headers[] = [new TableCell($table_header_message, ['colspan' => 6])];
-        $table_headers[] = ['ID', 'Project', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
+        $table_headers[] = [new TableCell($table_header_message, ['colspan' => 7])];
+        $table_headers[] = ['ID', 'Project', 'Date', 'Start Time', 'Stop Time', 'Session Length', 'Comments'];
 
         $table_rows   = $session->getSessionTimesWithProjectName();
         $table_rows[] = new TableSeparator();
-        $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 5)), new TableCell("<comment>$project_total</comment>", ['colspan' => 1])];
+        $table_rows[] = [new TableCell("<comment>Total:</comment>", array('colspan' => 5)), new TableCell("<comment>$project_total</comment>", ['colspan' => 2])];
 
-        $sessions_table->setHeaders($table_headers)->setRows($table_rows)->render();
+        $sessions_table->setHeaders($table_headers) ->setRows($table_rows) ->render();
 
-        $comments_table_header_message = (new OutputMessage("Comments for week of " . (new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString()))->asComment();
-
-        $x = 0;
-        $comment_array = [];
-        foreach($comments as $comment) {
-            $comment_array[$x]['id'] = $comment['id'];
-            $comment_array[$x]['project'] = $comment['name'];
-            $comment_array[$x]['comment'] = $comment['comment'];
-            $x++;
-        }
-
-        $comments_table_headers[] = [new TableCell($comments_table_header_message, ['colspan' => 3])];
+        $comments_table_headers[] = [new TableCell("Comments", ['colspan' => 3])];
         $comments_table_headers[] = ['ID', 'Project', 'Comment'];
-        $comments_table_rows = $comments_table;
 
-        $comments_table->setHeaders($comments_table_headers)->setRows($comment_array)->render();
+        $comments_table->setHeaders($comments_table_headers)->setRows($comments)->render();
 
         $this->paginate($input, $output, $date_week);
     }
