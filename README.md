@@ -72,6 +72,7 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 
 ### TODO
 
+* cltt times should show comments
 * Export to Google Docs
 * User preferences
 * Add comments to export file

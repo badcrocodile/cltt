@@ -65,7 +65,7 @@ class DatabaseAdapter {
      */
     public function fetchAll($tableName)
     {
-        return $this->connection->query('SELECT * FROM ' . $tableName)->fetchAll();
+        return $this->connection->query("SELECT * FROM $tableName")->fetchAll();
     }
 
     /**
@@ -75,7 +75,11 @@ class DatabaseAdapter {
      */
     public function fetchActiveProjects()
     {
-        return $this->connection->query('SELECT id, name FROM projects WHERE archived IS NULL')->fetchAll();
+        return $this->connection->query("
+            SELECT id, name 
+            FROM projects 
+            WHERE archived IS NULL")
+            ->fetchAll();
     }
 
     /**
@@ -85,7 +89,69 @@ class DatabaseAdapter {
      */
     public function fetchArchivedProjects()
     {
-        return $this->connection->query('SELECT id, name FROM projects WHERE archived IS NOT NULL')->fetchAll();
+        return $this->connection->query("
+            SELECT id, name 
+            FROM projects 
+            WHERE archived IS NOT NULL")
+            ->fetchAll();
+    }
+
+    /**
+     * Queries for all comments by date
+     *
+     * @param      $time_start
+     * @param      $time_end
+     * @param bool $currently_running   Include comments left on the currently running timer
+     *
+     * @return array
+     */
+    public function fetchCommentsByDate($time_start, $time_end, $currently_running=false)
+    {
+        if($currently_running == true) {
+            return $this->connection->query("
+                SELECT comments.comment, entries.id, projects.name
+                FROM comments
+                LEFT JOIN entries
+                ON entries.id = comments.entry_id
+                LEFT JOIN projects
+                ON entries.project_id = projects.id 
+                WHERE stop_time
+                BETWEEN $time_start AND $time_end
+                OR stop_time IS NULL
+            ")
+            ->fetchAll();
+        } else {
+            return $this->connection->query("
+                SELECT comments.comment, entries.id, projects.name
+                FROM comments
+                LEFT JOIN entries
+                ON entries.id = comments.entry_id
+                LEFT JOIN projects
+                ON entries.project_id = projects.id 
+                WHERE stop_time
+                BETWEEN $time_start AND $time_end
+            ")
+            ->fetchAll();
+        }
+    }
+
+    /**
+     * Queries for all comments attached to currently running timer
+     *
+     * @return array    A collection of comment data
+     */
+    public function fetchCurrentTimerComments()
+    {
+        return $this->connection->query("
+                SELECT comments.comment, entries.id, projects.name
+                FROM comments
+                LEFT JOIN entries
+                ON entries.id = comments.entry_id
+                LEFT JOIN projects
+                ON entries.project_id = projects.id 
+                WHERE entries.stop_time IS NULL
+        ")
+        ->fetchAll();
     }
 
     /**

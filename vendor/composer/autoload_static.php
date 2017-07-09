@@ -86,6 +86,7 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         'Acme\\RunningTimers' => __DIR__ . '/../..' . '/src/RunningTimers.php',
         'Acme\\Session' => __DIR__ . '/../..' . '/src/Session.php',
         'Acme\\ShowDates' => __DIR__ . '/../..' . '/src/ShowDates.php',
+        'Acme\\ShowDay' => __DIR__ . '/../..' . '/src/ShowDay.php',
         'Acme\\ShowProjects' => __DIR__ . '/../..' . '/src/ShowProjects.php',
         'Acme\\ShowTimes' => __DIR__ . '/../..' . '/src/ShowTimes.php',
         'Acme\\ShowWeek' => __DIR__ . '/../..' . '/src/ShowWeek.php',

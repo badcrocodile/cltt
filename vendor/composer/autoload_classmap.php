@@ -23,6 +23,7 @@ return array(
     'Acme\\RunningTimers' => $baseDir . '/src/RunningTimers.php',
     'Acme\\Session' => $baseDir . '/src/Session.php',
     'Acme\\ShowDates' => $baseDir . '/src/ShowDates.php',
+    'Acme\\ShowDay' => $baseDir . '/src/ShowDay.php',
     'Acme\\ShowProjects' => $baseDir . '/src/ShowProjects.php',
     'Acme\\ShowTimes' => $baseDir . '/src/ShowTimes.php',
     'Acme\\ShowWeek' => $baseDir . '/src/ShowWeek.php',

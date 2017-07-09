@@ -20,6 +20,9 @@ class DeleteTime extends Command {
 
         $this->database->query('DELETE FROM entries WHERE id = :timeID', compact('timeID'));
 
+        // Also delete comments
+        $this->database->query('DELETE FROM comments WHERE entry_id = :timeID', compact('timeID'));
+
         $output->writeln('<info>Entry deleted!</info>');
 
     }
