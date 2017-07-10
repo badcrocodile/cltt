@@ -7,14 +7,20 @@ A simple php command line utility to help you keep track of the shit you do all 
 
 ### Highlights
 * Create unlimited projects: `cltt add "Acme Widgets"`
-* Easily start tracking time: `cltt start`
+* Start tracking time: `cltt start`
 * Forget to start a timer? No problem: `cltt start [project ID] "45 minutes ago"`
-* Keep track of your work by adding comments to the task you are working on: `cltt comment "Working on feature A"`
 * Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
+* Add comments to the task you are working on: `cltt comment "Working on feature A"`
 * Show all times logged for a specific project: `cltt times`
 * Add new time entries on the fly `cltt add-time` and follow the prompts
-* Easily browse through your time entries: `cltt day` or `cltt week`
-* Export timesheets as csv (pdf coming soon): `cltt export`. Optionally specify a week to export: `cltt export "last week"`
+* See what you've done today: `cltt day`
+* See what you did yesterday `cltt day yesterday`
+* See what you did X number of days ago `cltt day "4 days ago`
+* See what you've done for the current week: `cltt week`
+* See what you did last week `cltt day week "last week"`
+* See what you did X number of weeks ago `cltt week "4 weeks ago`
+* Export timesheet for current week as csv (pdf coming soon): `cltt export` 
+* Export timesheet for X weeks ago: `cltt export "last week"` 
 * Archive & restore projects anytime `cltt archive` and `cltt restore`
 
 ### Setup
@@ -31,13 +37,13 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 
 **Start a timer:** `cltt start` or `cltt start [project ID]`.<br>
 * Forget to start a timer? Pass a 3rd argument representing when the timer should have been started: `cltt start [project ID] "15 minutes ago"`. 
-* Any time that can be parsed by php's strtotime will work.
+* Any time that can be parsed by php's [strtotime](http://php.net/manual/en/function.strtotime.php) function will work.
 
 **Add comments to the active timer:** `cltt comment "Cleaning up database"`
 
 **Stop your timer:** `cltt stop`.
 * Forget to stop a timer? Pass a second argument representing when the timer should have been stopped: `cltt stop "1 hour ago"`
-* Any time that can be parsed by php's strtotime will work.
+* Any time that can be parsed by php's [strtotime](http://php.net/manual/en/function.strtotime.php) will work.
 
 **Edit a time entry:** `cltt edit [time entry ID]`.
 * Retrieve a list of time entry ID's using `cltt times`
@@ -53,7 +59,7 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 
 **See what project is currently being timed:** `cltt running` or `cltt status`
 
-**Add a new time entry:** `cltt add-time`
+**Add a new time entry on-the-fly:** `cltt add-time`
 
 **List entries for a specific project:** `cltt times` or `cltt times [ID]`
 
@@ -72,7 +78,6 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 
 ### TODO
 
-* cltt times should show comments
 * Export to Google Docs
 * User preferences
 * Add comments to export file
