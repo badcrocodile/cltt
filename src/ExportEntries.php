@@ -43,7 +43,23 @@ class ExportEntries extends Command {
         $days_of_week['sunday']['start']    = (new Carbon($days_of_week['saturday']['start']))->addDay();
         $days_of_week['sunday']['stop']     = (new Carbon($days_of_week['sunday']['start']))->endOfDay();
 
-        $header_row = array("Project", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Total");
+        // Temporarily set the default __toString() format for Carbon
+        Carbon::setToStringFormat('F jS');
+
+        $header_row = array(
+            "Project",
+            "Monday " . $days_of_week['monday']['start'],
+            "Tuesday " . $days_of_week['tuesday']['start'],
+            "Wednesday " . $days_of_week['wednesday']['start'],
+            "Thursday " . $days_of_week['thursday']['start'],
+            "Friday " . $days_of_week['friday']['start'],
+            "Saturday " . $days_of_week['saturday']['start'],
+            "Sunday " . $days_of_week['sunday']['start'],
+            "Total"
+        );
+
+        // Reset the default __toString() format for Carbon
+        Carbon::resetToStringFormat();
 
         // csv array = [project name, monday hours, tuesday hours, wednesday hours, thursday hours, friday hours, saturday hours, sunday hours]
         // array = ("project name", "monday hours", "tuesday hours", "wednesday hours");

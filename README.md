@@ -79,5 +79,8 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 ### TODO
 
 * Export to Google Docs
-* User preferences
+* Export as PDF
+* Add dates to export file
 * Add comments to export file
+* User preferences
+* Better handling of timezones
