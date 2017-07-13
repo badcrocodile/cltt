@@ -126,7 +126,8 @@ class ExportEntries extends Command {
         // TODO: Save to better location
         // TODO: Prompt for file name (and location?)
         // TODO: Set up some sort of user preference system so user can input their preferred save location and timezone and stuff.
-        $fp = fopen('timesheet.csv', 'w');
+        $filename_timestamp = date('Y-m-d') . "[" . time() . "]";
+        $fp = fopen("timesheet-$filename_timestamp.xls", "w");
 
         foreach ($csv_row as $fields) {
             // TODO: This is a horrible way to remove empty projects from the export sheet.

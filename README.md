@@ -79,7 +79,6 @@ Check the time that php-cli has loaded. Run this in a console, adjust as necessa
 ### TODO
 
 * Add comments to export file
-* If there are no times logged for a project during the exported week, do not show the project in the export file
 * Export as PDF
 * User preferences
 * Better handling of timezones
