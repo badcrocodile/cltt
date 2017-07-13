@@ -111,6 +111,7 @@ class ExportEntries extends Command {
             }
 
             $csv_array[$i][] = FormatTime::formatTotal($project_week_total);
+
             $i++;
         }
 
@@ -128,7 +129,11 @@ class ExportEntries extends Command {
         $fp = fopen('timesheet.csv', 'w');
 
         foreach ($csv_row as $fields) {
-            fputcsv($fp, $fields);
+            // TODO: This is a horrible way to remove empty projects from the export sheet.
+            // Remove empty projects from the exported timesheet
+            if(end($fields) != "0 minutes") {
+                fputcsv($fp, $fields);
+            }
         }
 
         fclose($fp);
