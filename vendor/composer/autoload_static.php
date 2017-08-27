@@ -76,6 +76,7 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         'Acme\\Command' => __DIR__ . '/../..' . '/src/Command.php',
         'Acme\\CsvResponse' => __DIR__ . '/../..' . '/src/CsvResponse.php',
         'Acme\\DatabaseAdapter' => __DIR__ . '/../..' . '/src/DatabaseAdapter.php',
+        'Acme\\DaysOfWeek' => __DIR__ . '/../..' . '/src/DaysOfWeek.php',
         'Acme\\DeleteTime' => __DIR__ . '/../..' . '/src/DeleteTime.php',
         'Acme\\EditTime' => __DIR__ . '/../..' . '/src/EditTime.php',
         'Acme\\ExportEntries' => __DIR__ . '/../..' . '/src/ExportEntries.php',

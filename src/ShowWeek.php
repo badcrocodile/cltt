@@ -1,6 +1,7 @@
 <?php namespace Acme;
 
 
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputInterface;
@@ -42,6 +43,7 @@ class ShowWeek extends ShowDates {
 
         // Get all comments attached to those sessions
         $comments = $this->database->fetchCommentsByDate($date_week_start, $date_week_end);
+        var_dump($comments);
 
         $session = new Session($sessions);
 
@@ -96,6 +98,12 @@ class ShowWeek extends ShowDates {
             case "p":
                 $input->setArgument('week', $current_week->subWeek());
                 $this->execute($input, $output);
+                break;
+            case "e":
+                $command = $this->getApplication()->find('export');
+                $arguments = array('week' => $current_week);
+                $exportInput = new ArrayInput($arguments);
+                $command->run($exportInput, $output);
                 break;
             case "a":
                 return;

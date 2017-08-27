@@ -13,6 +13,7 @@ return array(
     'Acme\\Command' => $baseDir . '/src/Command.php',
     'Acme\\CsvResponse' => $baseDir . '/src/CsvResponse.php',
     'Acme\\DatabaseAdapter' => $baseDir . '/src/DatabaseAdapter.php',
+    'Acme\\DaysOfWeek' => $baseDir . '/src/DaysOfWeek.php',
     'Acme\\DeleteTime' => $baseDir . '/src/DeleteTime.php',
     'Acme\\EditTime' => $baseDir . '/src/EditTime.php',
     'Acme\\ExportEntries' => $baseDir . '/src/ExportEntries.php',
