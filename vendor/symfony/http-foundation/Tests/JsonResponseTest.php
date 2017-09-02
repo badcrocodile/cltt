@@ -11,9 +11,10 @@
 
 namespace Symfony\Component\HttpFoundation\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class JsonResponseTest extends \PHPUnit_Framework_TestCase
+class JsonResponseTest extends TestCase
 {
     public function testConstructorEmptyCreatesJsonObject()
     {
@@ -198,6 +199,12 @@ class JsonResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('{"0":{"0":1,"1":2,"2":3}}', $response->getContent());
     }
 
+    public function testItAcceptsJsonAsString()
+    {
+        $response = JsonResponse::fromJsonString('{"foo":"bar"}');
+        $this->assertSame('{"foo":"bar"}', $response->getContent());
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      */
@@ -224,6 +231,14 @@ class JsonResponseTest extends \PHPUnit_Framework_TestCase
         $serializable = new JsonSerializableObject();
 
         JsonResponse::create($serializable);
+    }
+
+    public function testSetComplexCallback()
+    {
+        $response = JsonResponse::create(array('foo' => 'bar'));
+        $response->setCallback('ಠ_ಠ["foo"].bar[0]');
+
+        $this->assertEquals('/**/ಠ_ಠ["foo"].bar[0]({"foo":"bar"});', $response->getContent());
     }
 }
 

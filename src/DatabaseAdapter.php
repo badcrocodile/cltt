@@ -114,7 +114,7 @@ class DatabaseAdapter {
             ->fetchAll();
         } else {
             return $this->connection->query("
-                SELECT entries.id, projects.name, comments.comment
+                SELECT entries.id, projects.name, comments.comment, comments.timestamp
                 FROM comments
                 LEFT JOIN entries
                 ON entries.id = comments.entry_id

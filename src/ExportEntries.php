@@ -1,10 +1,13 @@
 <?php namespace Acme;
 
 use Carbon\Carbon;
+//use PHPExcel;
+//use PHPExcel_IOFactory;
+use PHPExcel;
+use PHPExcel_IOFactory;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Acme\DaysOfWeek;
 
 class ExportEntries extends Command {
     public function configure()
@@ -22,34 +25,37 @@ class ExportEntries extends Command {
      */
     public function execute(InputInterface $input, OutputInterface $output) {
         // The week being displayed to screen
-        $week          = $input->getArgument('week');
+        $week = $input->getArgument('week');
         // If no week specified use current week
-        $date_week     = (isset($week) ? new Carbon($week) : new Carbon());
+        $date_week = (isset($week) ? new Carbon($week) : new Carbon());
         // Start of week
         $start_of_week = (new Carbon($date_week))->startOfWeek();
-        // Days of wee
-        $days_of_week  = new DaysOfWeek($start_of_week);
-        $date_week_start    = (new Carbon($date_week))->startOfWeek()->timestamp;
-        $date_week_end      = (new Carbon($date_week))->endOfWeek()->timestamp;
+        // Days of week
+        $days_of_week = new DaysOfWeek($start_of_week);
         // Get all active projects
-        $projects      = $this->database->fetchAll('projects');
-        $csv_array     = [];
-        $i             = 0;
+        $projects = $this->database->fetchAll('projects');
+        // Timestamp for file naming convention
+        $filename_timestamp = date('Y-m-d') . "[" . time() . "]";
 
-        $header_row = array(
-            "Project",
-            "Monday "    . $days_of_week->day_of_week['monday']['start'],
-            "Tuesday "   . $days_of_week->day_of_week['tuesday']['start'],
-            "Wednesday " . $days_of_week->day_of_week['wednesday']['start'],
-            "Thursday "  . $days_of_week->day_of_week['thursday']['start'],
-            "Friday "    . $days_of_week->day_of_week['friday']['start'],
-            "Saturday "  . $days_of_week->day_of_week['saturday']['start'],
-            "Sunday "    . $days_of_week->day_of_week['sunday']['start'],
-            "Total"
-        );
+        $timesheet = fopen("timesheet-$filename_timestamp.xls", "w") or die("Unable to open file!");
 
+        $times_out = "<table>";
+        $times_out .= "<tr>";
+        $times_out .= "<th>Project</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['monday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['tuesday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['wednesday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['thursday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['friday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['saturday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['sunday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>Total</th>";
+        $times_out .= "</tr>";
+
+        $i = 0;
+        $time_entries = [];
         foreach($projects as $p) {
-            $csv_array[$i][] = $p['name'];
+            $time_entries[$i][] = $p['name'];
 
             $x = 0;
             foreach($days_of_week->day_of_week as $day_of_week => $day_delimiter) {
@@ -77,9 +83,9 @@ class ExportEntries extends Command {
                 $project_day_total[$i][] = $total_for_day;
 
                 if($total_for_day != 0) {
-                    $csv_array[$i][] = FormatTime::formatTotal($total_for_day);
+                    $time_entries[$i][] = FormatTime::formatTotal($total_for_day);
                 } else {
-                    $csv_array[$i][] = '0';
+                    $time_entries[$i][] = '0';
                 }
 
                 $x++;
@@ -88,55 +94,59 @@ class ExportEntries extends Command {
             // calculate project time for the week
             $project_week_total = 0;
             foreach($project_day_total[$i] as $key=>$value) {
-                // echo "Key is $key and value is $value\n";
                 $project_week_total += $value;
             }
 
-            $csv_array[$i][] = FormatTime::formatTotal($project_week_total);
+            $time_entries[$i][] = FormatTime::formatTotal($project_week_total);
 
             $i++;
         }
 
-        $csv_row[0] = $header_row;
-
-        $x = 0;
-        foreach($csv_array as $item) {
-            $x++;
-            $csv_row[$x] = $item;
-        }
-
-        // TODO: Save to better location
-        // TODO: Prompt for file name (and location?)
-        // TODO: Set up some sort of user preference system so user can input their preferred save location and timezone and stuff.
-        $filename_timestamp = date('Y-m-d') . "[" . time() . "]";
-
-        $fp = fopen("timesheet-$filename_timestamp.xls", "w");
-
-        foreach ($csv_row as $fields) {
+        foreach($time_entries as $times) {
             // FIXME: This is a horrible way to remove empty projects from the export sheet.
             // Remove empty projects from the exported timesheet
-            if(end($fields) != "0 minutes") {
-                fputcsv($fp, $fields);
+            if(end($times) != "0 minutes") {
+                $times_out .= "<tr>";
+                foreach($times as $time) {
+                    $times_out .= "<td>$time</td>";
+                }
+                $times_out .= "</tr>";
             }
         }
 
+        $times_out .= "</table>";
+
+        fwrite($timesheet, $times_out);
+
+        // Build the comment section
+        $date_week_start = (new Carbon($date_week))->startOfWeek()->timestamp;
+        $date_week_end = (new Carbon($date_week))->endOfWeek()->timestamp;
         $comments = $this->database->fetchCommentsByDate($date_week_start, $date_week_end);
-        var_dump($comments);
+//        var_dump($comments);
 
-        // Append all the comments
-        $csv_comment_header_row = ['Date', 'Project', 'Comment'];
-        $csv_comment_row = [];
-        $csv_comment_row[0] = [];
-        $csv_comment_row[1] = [];
-        $csv_comment_row[2] = [];
-        $csv_comment_row[3] = [];
-        $csv_comment_row[4] = ['Date', 'Project', 'Comment'];
-        $csv_comment_row[5] = ['Test', 'Wont', 'Work'];
+        $comments_out = "";
+        $comments_out .= "<table>";
+        $comments_out .= "<tr></tr>";
+        $comments_out .= "<tr></tr>";
+        $comments_out .= "<tr></tr>";
+        $comments_out .= "<tr>";
+        $comments_out .= "<th>Date</th>";
+        $comments_out .= "<th>Project</th>";
+        $comments_out .= "<th>Comment</th>";
+        $comments_out .= "</tr>";
 
-        foreach($csv_comment_row as $item) {
-            fputcsv($fp, $item);
+        foreach($comments as $comment) {
+            $comments_out .= "<tr>";
+            $comments_out .= "<td>" . (new Carbon($comment['timestamp']))->format('l m/d/Y') . "</td>";
+            $comments_out .= "<td>" . $comment['name'] . "</td>";
+            $comments_out .= "<td colspan='7'>" . $comment['comment'] . "</td>";
+            $comments_out .= "</tr>";
         }
 
-        fclose($fp);
+        $comments_out .= "</table>";
+
+        fwrite($timesheet, $comments_out);
+
+        fclose($timesheet);
     }
 }
