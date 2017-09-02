@@ -3,10 +3,11 @@
 **C**ommand **L**ine **T**ime **T**racker.
 
 ### What is it?
-A simple php command line time tracking utility built for those who, like me, live and die inside our terminals.
+A simple cli utility for keeping track of all the shit you do during your day.
 
-At its core this is just another way to keep track of the shit you do all day. It's a simple timer that supports unlimited
-projects and allows you to enter comments to the currently running timer.
+At its core it's a way to respond intelligently the next time your PM asks "What have you been working on today?" 
+Drop into your terminal, run `cltt day`, and have a solid answer. Or even tougher, "What did you do yesterday?" 
+Answer: `cltt day yesterday`. 
 
 It has a number of tools for browsing through your days and weeks, and you can easily export your timesheets with a single command.
 
@@ -21,18 +22,18 @@ It has a number of tools for browsing through your days and weeks, and you can e
 * Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
 * Forget to log some times yesterday (or even last week)? Add new time entries on the fly `cltt add-time` and follow the prompts
 
-#### Advanced features:
-##### What have I done today?
+#### Browsing:
+##### What have I done today (or X days ago)?
 * See what you've done today: `cltt day`
 * See what you did yesterday `cltt day yesterday`
 * See what you did X number of days ago `cltt day "4 days ago`
-* `cltt day` also supports pagination for you to browse through your days!
+* `cltt day` also supports pagination for you to browse through your days.
 
-##### What have I done this week?
+##### What have I done this week (or X weeks ago)?
 * See what you've done for the current week: `cltt week`
 * See what you did last week `cltt day week "last week"`
 * See what you did X number of weeks ago `cltt week "4 weeks ago"`
-* `cltt week` also supports pagination for you to browse through your weeks!
+* `cltt week` also supports pagination for you to browse through your weeks.
 
 ##### Exporting timesheets
 * Export timesheet for current week: `cltt export` 
@@ -100,3 +101,4 @@ It has a number of tools for browsing through your days and weeks, and you can e
 
 * User preferences (timezones, export file location)
 * Export to Google Sheets?
+* Desktop notifications
