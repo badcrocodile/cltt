@@ -8,8 +8,7 @@ require 'vendor/autoload.php';
 
 $app = new Application('Project App', '1.0');
 
-try
-{
+try {
     $pdo = new PDO('sqlite:' . dirname(__FILE__) . '/db.sqlite') or die("Can't open the database Captain.");
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -36,14 +35,13 @@ try
             timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL
         )"
     );
-}
-catch(Exception $exception)
-{
+} catch(Exception $exception) {
     echo "Error connecting to the database\n";
     echo "Message: " . $exception->getMessage() . "\n";
     if(!extension_loaded('sqlite3')) {
         echo "Looks like php-sqlite3 extension isn't available.\n";
     }
+
     exit(1);
 }
 

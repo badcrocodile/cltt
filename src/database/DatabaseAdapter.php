@@ -28,7 +28,6 @@ class DatabaseAdapter {
         return $this->connection->prepare($sql)->execute($parameters);
     }
 
-
     /**
      * Returns ID of last inserted row
      *
@@ -146,6 +145,14 @@ class DatabaseAdapter {
         ->fetchAll();
     }
 
+    /**
+     * Gather logged sessions between given dates
+     *
+     * @param $date_start
+     * @param $date_end
+     *
+     * @return array
+     */
     public function fetchSessionsByDate($date_start, $date_end)
     {
         return $this->connection->query("
@@ -227,6 +234,8 @@ class DatabaseAdapter {
     }
 
     /**
+     * Simple select query that returns everything
+     *
      * @param $sql
      * @return array
      */
