@@ -42,7 +42,7 @@ class CalculateTime {
     }
 
     /**
-     * TODO: Adding the stuff we need in this way isn't sustainable. We should be able to just pass the data fields we want into a single method (id, name, etc)
+     * FIXME: Adding the stuff we need in this way isn't sustainable. We should be able to just pass the data fields we want into a single method (id, name, etc)
      * @param $timesArray
      * @return array
      */
@@ -50,17 +50,33 @@ class CalculateTime {
         $x = 0;
         $session_times = [];
         foreach ($timesArray as $times_array) {
-            $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
-            $total_format = FormatTime::formatTotal($total_in_seconds, false);
-            $session_times[$x]['id']    = $times_array['id'];
-            $session_times[$x]['name']  = $times_array['name'];
-            $session_times[$x]['date']  = date('D, M dS, Y', $times_array['start_time']);
-            $session_times[$x]['start'] = date('h:i A', $times_array['start_time']);
-            $session_times[$x]['stop']  = date('h:i A', $times_array['stop_time']);
-            $session_times[$x]['total'] = Carbon::createFromTimestamp($times_array['start_time'])
-                ->diff(Carbon::createFromTimestamp($times_array['stop_time']))
-                ->format($total_format);
-            $x++;
+            if($times_array['stop_time'] === NULL) {
+                $total_in_seconds = CalculateTime::sessionTotalInSeconds(time(), $times_array['start_time']);
+                $total_format = FormatTime::formatTotal($total_in_seconds, false);
+                $session_times[$x]['id']    = $times_array['id'];
+                $session_times[$x]['name']  = $times_array['name'];
+                $session_times[$x]['date']  = date('D, M dS, Y', $times_array['start_time']);
+                $session_times[$x]['start'] = date('h:i A', $times_array['start_time']);
+                $session_times[$x]['stop'] = "Running...";
+                $session_times[$x]['total'] = Carbon::createFromTimestamp($times_array['start_time'])
+                    ->diff(Carbon::createFromTimestamp($times_array['stop_time']))
+                    ->format($total_format);
+
+                $x++;
+            } else {
+                $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
+                $total_format = FormatTime::formatTotal($total_in_seconds, false);
+                $session_times[$x]['id']    = $times_array['id'];
+                $session_times[$x]['name']  = $times_array['name'];
+                $session_times[$x]['date']  = date('D, M dS, Y', $times_array['start_time']);
+                $session_times[$x]['start'] = date('h:i A', $times_array['start_time']);
+                $session_times[$x]['stop']  = date('h:i A', $times_array['stop_time']);
+                $session_times[$x]['total'] = Carbon::createFromTimestamp($times_array['start_time'])
+                    ->diff(Carbon::createFromTimestamp($times_array['stop_time']))
+                    ->format($total_format);
+
+                $x++;
+            }
         }
 
         return $session_times;
@@ -70,14 +86,24 @@ class CalculateTime {
      * Calculates the total time (in seconds) spent on a project
      *
      * @param $timesArray
-     * @return array
+     *
+     * @return int
      */
     public static function computeProjectTotalSeconds($timesArray, $sort_by_project = false) {
-        $x = 0;
         $project_total_seconds = 0;
+
+        $x = 0;
+
         foreach ($timesArray as $times_array) {
+            // Account for currently running timers
+            if($times_array['stop_time'] === NULL) {
+                $times_array['stop_time'] = time();
+            }
+
             $total_in_seconds = CalculateTime::sessionTotalInSeconds($times_array['stop_time'], $times_array['start_time']);
+
             $project_total_seconds += $total_in_seconds;
+
             $x++;
         }
 

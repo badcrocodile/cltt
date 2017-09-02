@@ -43,6 +43,7 @@ class ShowDay extends ShowDates {
             ON entries.project_id = projects.id
             WHERE stop_time 
             BETWEEN $date_day_start AND $date_day_end
+            OR stop_time is NULL
         ");
 
         $comments = $this->database->selectWhere("
@@ -54,6 +55,7 @@ class ShowDay extends ShowDates {
             ON entries.project_id = projects.id 
             WHERE stop_time 
             BETWEEN $date_day_start AND $date_day_end
+            OR stop_time IS NULL
         ");
 
 
@@ -97,7 +99,7 @@ class ShowDay extends ShowDates {
     }
 
     /**
-     * Paginates through results by week
+     * Paginates through results by day
      *
      * @param \Symfony\Component\Console\Input\InputInterface   $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
