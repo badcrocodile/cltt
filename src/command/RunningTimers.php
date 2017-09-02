@@ -37,7 +37,7 @@ class RunningTimers extends Command {
                 $output->writeln((new OutputMessage(""))->asInfo());
                 $output->writeln((new OutputMessage("Comments: "))->asInfo());
 
-                foreach( $comments as $comment ) {
+                foreach($comments as $comment) {
                     $output->writeln((new OutputMessage("- " . $comment['comment']))->asComment());
                 }
             }

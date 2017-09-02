@@ -28,7 +28,6 @@ class DatabaseAdapter {
         return $this->connection->prepare($sql)->execute($parameters);
     }
 
-
     /**
      * Returns ID of last inserted row
      *
@@ -99,19 +98,18 @@ class DatabaseAdapter {
      */
     public function fetchCommentsByDate($time_start, $time_end, $currently_running=false)
     {
-        if($currently_running == true) {
+        if($currently_running === true) {
             return $this->connection->query("
-                SELECT entries.id, projects.name, comments.comment
+                SELECT entries.id, projects.name, comments.comment, comments.timestamp
                 FROM comments
                 LEFT JOIN entries
                 ON entries.id = comments.entry_id
                 LEFT JOIN projects
                 ON entries.project_id = projects.id 
-                WHERE stop_time
+                WHERE entries.stop_time
                 BETWEEN $time_start AND $time_end
-                OR stop_time IS NULL
-            ")
-            ->fetchAll();
+                OR entries.stop_time IS NULL
+            ")->fetchAll();
         } else {
             return $this->connection->query("
                 SELECT entries.id, projects.name, comments.comment, comments.timestamp
@@ -120,10 +118,9 @@ class DatabaseAdapter {
                 ON entries.id = comments.entry_id
                 LEFT JOIN projects
                 ON entries.project_id = projects.id 
-                WHERE stop_time
+                WHERE entries.stop_time
                 BETWEEN $time_start AND $time_end
-            ")
-            ->fetchAll();
+            ")->fetchAll();
         }
     }
 
@@ -146,17 +143,37 @@ class DatabaseAdapter {
         ->fetchAll();
     }
 
-    public function fetchSessionsByDate($date_start, $date_end)
+    /**
+     * Gather logged sessions between given dates
+     *
+     * @param      $date_start
+     * @param      $date_end
+     * @param bool $running Include currently running timers
+     *
+     * @return array
+     */
+    public function fetchSessionsByDate($date_start, $date_end, $currently_running=false)
     {
-        return $this->connection->query("
-            SELECT entries.id, project_id, start_time, stop_time, name
-            FROM entries
-            JOIN projects
-            ON entries.project_id = projects.id
-            WHERE stop_time 
-            BETWEEN $date_start AND $date_end
-        ")
-        ->fetchAll();
+        if($currently_running === true) {
+            return $this->connection->query("
+                SELECT entries.id, project_id, start_time, stop_time, name
+                FROM entries
+                JOIN projects
+                ON entries.project_id = projects.id
+                WHERE entries.stop_time 
+                BETWEEN $date_start AND $date_end
+                OR entries.stop_time is NULL
+            ")->fetchAll();
+        } else {
+            return $this->connection->query("
+                SELECT entries.id, project_id, start_time, stop_time, name
+                FROM entries
+                JOIN projects
+                ON entries.project_id = projects.id
+                WHERE entries.stop_time 
+                BETWEEN $date_start AND $date_end
+            ")->fetchAll();
+        }
     }
 
     /**
@@ -227,6 +244,8 @@ class DatabaseAdapter {
     }
 
     /**
+     * Simple select query that returns everything
+     *
      * @param $sql
      * @return array
      */
