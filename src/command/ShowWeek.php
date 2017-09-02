@@ -36,6 +36,7 @@ class ShowWeek extends ShowDates {
          * https://github.com/briannesbitt/Carbon/issues/175
          */
         $week               = $input->getArgument('week');
+        $paginated          = (isset($week) ? true : false);
         $date_week          = (isset($week) ? new Carbon($week) : new Carbon());
         $date_week_start    = (new Carbon($date_week))->startOfWeek()->timestamp;
         $date_week_end      = (new Carbon($date_week))->endOfWeek()->timestamp;
@@ -77,6 +78,7 @@ class ShowWeek extends ShowDates {
         $comments_table_headers[] = ['ID', 'Project', 'Comment', 'Date'];
 
         // Make each comment timestamp human readable
+        // TODO: Make sure all formatting of dates uses FormatTime class instead of using Carbon
         $x = 0;
         foreach($comments as $comment) {
             $comments[$x]['timestamp'] = (new Carbon($comment['timestamp']))->format('D, M dS, Y');

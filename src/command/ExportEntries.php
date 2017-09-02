@@ -38,6 +38,7 @@ class ExportEntries extends Command {
         $times_out = "<table>";
         $times_out .= "<tr>";
         $times_out .= "<th>Project</th>";
+        // TODO: Formatting of time should be using FormatTime class not carbon
         $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['monday']['start']))->format('l m/d/Y') . "</th>";
         $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['tuesday']['start']))->format('l m/d/Y') . "</th>";
         $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['wednesday']['start']))->format('l m/d/Y') . "</th>";

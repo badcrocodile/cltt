@@ -4,21 +4,17 @@
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableSeparator;
-use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Input\Input;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
-use Carbon\Carbon;
-use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Console\Question\Question;
+use Carbon\Carbon;
 
 class ShowDay extends ShowDates {
 
     public function configure()
     {
+        // TODO: Day command should not output Date as part of the table it's redundant
         $this->setName('day')
             ->setDescription('Display times logged during a specific day.')
             ->addArgument('day', InputArgument::OPTIONAL);
@@ -34,6 +30,7 @@ class ShowDay extends ShowDates {
     public function execute(InputInterface $input, OutputInterface $output, $paginated=false)
     {
         $day               = $input->getArgument('day');
+        $paginated         = (isset($day) ? true : false);
         $date_day          = (isset($day) ? new Carbon($day) : new Carbon());
         $date_day_start    = (new Carbon($date_day))->startOfDay()->timestamp;
         $date_day_end      = (new Carbon($date_day))->endOfDay()->timestamp;
@@ -107,7 +104,7 @@ class ShowDay extends ShowDates {
 
         $output->writeln((new OutputMessage("")));
 
-        $question = new Question('([<info>n</info>]ext | [<info>p</info>]revious | [<info>e</info>]xport | [<info>q</info>]uit) => ', 'null');
+        $question = new Question('([<info>n</info>]ext | [<info>p</info>]revious | [<info>q</info>]uit) => ', 'null');
 
         $paginate = $helper->ask($input, $output, $question);
 
