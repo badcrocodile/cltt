@@ -1,6 +1,10 @@
 <?php namespace Acme;
 
 use Carbon\Carbon;
+//use PHPExcel;
+//use PHPExcel_IOFactory;
+use PHPExcel;
+use PHPExcel_IOFactory;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,61 +24,46 @@ class ExportEntries extends Command {
      * @return int|null|void
      */
     public function execute(InputInterface $input, OutputInterface $output) {
+        // The week being displayed to screen
         $week = $input->getArgument('week');
+        // If no week specified use current week
         $date_week = (isset($week) ? new Carbon($week) : new Carbon());
-        $date_week_start = (new Carbon($date_week))->startOfWeek()->timestamp;
-        $date_week_end = (new Carbon($date_week))->endOfWeek()->timestamp;
+        // Start of week
         $start_of_week = (new Carbon($date_week))->startOfWeek();
-
+        // Days of week
+        $days_of_week = new DaysOfWeek($start_of_week);
+        // Get all active projects
         $projects = $this->database->fetchAll('projects');
+        // Timestamp for file naming convention
+        $filename_timestamp = date('Y-m-d') . "[" . time() . "]";
 
-        $days_of_week['monday']['start']    = (new Carbon($start_of_week));
-        $days_of_week['monday']['stop']     = (new Carbon($days_of_week['monday']['start']))->endOfDay();
-        $days_of_week['tuesday']['start']   = (new Carbon($days_of_week['monday']['start']))->addDay();
-        $days_of_week['tuesday']['stop']    = (new Carbon($days_of_week['tuesday']['start']))->endOfDay();
-        $days_of_week['wednesday']['start'] = (new Carbon($days_of_week['tuesday']['start']))->addDay();
-        $days_of_week['wednesday']['stop']  = (new Carbon($days_of_week['wednesday']['start']))->endOfDay();
-        $days_of_week['thursday']['start']  = (new Carbon($days_of_week['wednesday']['start']))->addDay();
-        $days_of_week['thursday']['stop']   = (new Carbon($days_of_week['thursday']['start']))->endOfDay();
-        $days_of_week['friday']['start']    = (new Carbon($days_of_week['thursday']['start']))->addDay();
-        $days_of_week['friday']['stop']     = (new Carbon($days_of_week['friday']['start']))->endOfDay();
-        $days_of_week['saturday']['start']  = (new Carbon($days_of_week['friday']['start']))->addDay();
-        $days_of_week['saturday']['stop']   = (new Carbon($days_of_week['saturday']['start']))->endOfDay();
-        $days_of_week['sunday']['start']    = (new Carbon($days_of_week['saturday']['start']))->addDay();
-        $days_of_week['sunday']['stop']     = (new Carbon($days_of_week['sunday']['start']))->endOfDay();
+        $timesheet = fopen("timesheet-$filename_timestamp.xls", "w") or die("Unable to open file!");
 
-        // Temporarily set the default __toString() format for Carbon
-        Carbon::setToStringFormat('F jS');
-
-        $header_row = array(
-            "Project",
-            "Monday " . $days_of_week['monday']['start'],
-            "Tuesday " . $days_of_week['tuesday']['start'],
-            "Wednesday " . $days_of_week['wednesday']['start'],
-            "Thursday " . $days_of_week['thursday']['start'],
-            "Friday " . $days_of_week['friday']['start'],
-            "Saturday " . $days_of_week['saturday']['start'],
-            "Sunday " . $days_of_week['sunday']['start'],
-            "Total"
-        );
-
-        // Reset the default __toString() format for Carbon
-        Carbon::resetToStringFormat();
-
-        // csv array = [project name, monday hours, tuesday hours, wednesday hours, thursday hours, friday hours, saturday hours, sunday hours]
-        // array = ("project name", "monday hours", "tuesday hours", "wednesday hours");
-
-        $csv_array = [];
+        $times_out = "<table>";
+        $times_out .= "<tr>";
+        $times_out .= "<th>Project</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['monday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['tuesday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['wednesday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['thursday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['friday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['saturday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>" . (new Carbon($days_of_week->day_of_week['sunday']['start']))->format('l m/d/Y') . "</th>";
+        $times_out .= "<th>Total</th>";
+        $times_out .= "</tr>";
 
         $i = 0;
+        $time_entries = [];
         foreach($projects as $p) {
-            $csv_array[$i][] = $p['name'];
+            $time_entries[$i][] = $p['name'];
 
             $x = 0;
-            foreach($days_of_week as $day_of_week => $day_delimiter) {
-                $day_start = $day_delimiter['start']->timestamp;
-                $day_stop  = $day_delimiter['stop']->timestamp;
-                $project_name = $p['name'];
+            foreach($days_of_week->day_of_week as $day_of_week => $day_delimiter) {
+                $day_start     = $day_delimiter['start']->timestamp;
+                $day_stop      = $day_delimiter['stop']->timestamp;
+                $project_name  = $p['name'];
+                $total_for_day = 0;
+
                 $project_times = $this->database->selectWhere("
                     SELECT session_length
                     FROM entries
@@ -85,58 +74,78 @@ class ExportEntries extends Command {
                     AND $day_stop
                     AND projects.name = '" . $project_name . "'
                 ");
+
                 // calculate project time for the day
-                $total_for_day = 0;
                 foreach($project_times as $project_time) {
                     $total_for_day += $project_time['session_length'];
                 }
 
-                // echo "Total time for $project_name on $day_of_week: $total_for_day\n";
-
                 $project_day_total[$i][] = $total_for_day;
 
                 if($total_for_day != 0) {
-                    $csv_array[$i][] = FormatTime::formatTotal($total_for_day);
+                    $time_entries[$i][] = FormatTime::formatTotal($total_for_day);
                 } else {
-                    $csv_array[$i][] = '--';
+                    $time_entries[$i][] = '0';
                 }
+
                 $x++;
             }
 
             // calculate project time for the week
             $project_week_total = 0;
             foreach($project_day_total[$i] as $key=>$value) {
-                // echo "Key is $key and value is $value\n";
                 $project_week_total += $value;
             }
 
-            $csv_array[$i][] = FormatTime::formatTotal($project_week_total);
+            $time_entries[$i][] = FormatTime::formatTotal($project_week_total);
 
             $i++;
         }
 
-        $csv_row[0] = $header_row;
-
-        $x = 0;
-        foreach($csv_array as $item) {
-            $x++;
-            $csv_row[$x] = $item;
-        }
-
-        // TODO: Save to better location
-        // TODO: Prompt for file name (and location?)
-        // TODO: Set up some sort of user preference system so user can input their preferred save location and timezone and stuff.
-        $filename_timestamp = date('Y-m-d') . "[" . time() . "]";
-        $fp = fopen("timesheet-$filename_timestamp.xls", "w");
-
-        foreach ($csv_row as $fields) {
-            // TODO: This is a horrible way to remove empty projects from the export sheet.
+        foreach($time_entries as $times) {
+            // FIXME: This is a horrible way to remove empty projects from the export sheet.
             // Remove empty projects from the exported timesheet
-            if(end($fields) != "0 minutes") {
-                fputcsv($fp, $fields);
+            if(end($times) != "0 minutes") {
+                $times_out .= "<tr>";
+                foreach($times as $time) {
+                    $times_out .= "<td>$time</td>";
+                }
+                $times_out .= "</tr>";
             }
         }
 
-        fclose($fp);
+        $times_out .= "</table>";
+
+        fwrite($timesheet, $times_out);
+
+        // Build the comment section
+        $date_week_start = (new Carbon($date_week))->startOfWeek()->timestamp;
+        $date_week_end = (new Carbon($date_week))->endOfWeek()->timestamp;
+        $comments = $this->database->fetchCommentsByDate($date_week_start, $date_week_end);
+
+        $comments_out = "";
+        $comments_out .= "<table>";
+        $comments_out .= "<tr></tr>";
+        $comments_out .= "<tr></tr>";
+        $comments_out .= "<tr></tr>";
+        $comments_out .= "<tr>";
+        $comments_out .= "<th>Date</th>";
+        $comments_out .= "<th>Project</th>";
+        $comments_out .= "<th>Comment</th>";
+        $comments_out .= "</tr>";
+
+        foreach($comments as $comment) {
+            $comments_out .= "<tr>";
+            $comments_out .= "<td>" . (new Carbon($comment['timestamp']))->format('l m/d/Y') . "</td>";
+            $comments_out .= "<td>" . $comment['name'] . "</td>";
+            $comments_out .= "<td colspan='7'>" . $comment['comment'] . "</td>";
+            $comments_out .= "</tr>";
+        }
+
+        $comments_out .= "</table>";
+
+        fwrite($timesheet, $comments_out);
+
+        fclose($timesheet);
     }
 }
