@@ -1,4 +1,4 @@
-<?php namespace Acme;
+<?php namespace Cltt;
 
 
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
@@ -12,7 +12,7 @@ class Command extends SymfonyCommand {
     /**
      * Command constructor.
      *
-     * @param \Acme\DatabaseAdapter $database
+     * @param \Cltt\DatabaseAdapter $database
      */
     public function __construct(DatabaseAdapter $database)
     {

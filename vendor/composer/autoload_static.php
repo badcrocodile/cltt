@@ -25,11 +25,8 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         ),
         'C' => 
         array (
+            'Cltt\\' => 5,
             'Carbon\\' => 7,
-        ),
-        'A' => 
-        array (
-            'Acme\\' => 5,
         ),
     );
 
@@ -58,44 +55,44 @@ class ComposerStaticInit0d141d32e9162f5c7415075a374fd261
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Cltt\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Acme\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
     );
 
     public static $classMap = array (
-        'Acme\\AddComment' => __DIR__ . '/../..' . '/src/AddComment.php',
-        'Acme\\AddTime' => __DIR__ . '/../..' . '/src/AddTime.php',
-        'Acme\\ArchiveProject' => __DIR__ . '/../..' . '/src/ArchiveProject.php',
-        'Acme\\CalculateTime' => __DIR__ . '/../..' . '/src/CalculateTime.php',
-        'Acme\\Command' => __DIR__ . '/../..' . '/src/Command.php',
-        'Acme\\CsvResponse' => __DIR__ . '/../..' . '/src/CsvResponse.php',
-        'Acme\\DatabaseAdapter' => __DIR__ . '/../..' . '/src/DatabaseAdapter.php',
-        'Acme\\DaysOfWeek' => __DIR__ . '/../..' . '/src/DaysOfWeek.php',
-        'Acme\\DeleteTime' => __DIR__ . '/../..' . '/src/DeleteTime.php',
-        'Acme\\EditTime' => __DIR__ . '/../..' . '/src/EditTime.php',
-        'Acme\\ExportEntries' => __DIR__ . '/../..' . '/src/ExportEntries.php',
-        'Acme\\FormatTime' => __DIR__ . '/../..' . '/src/FormatTime.php',
-        'Acme\\NewProject' => __DIR__ . '/../..' . '/src/NewProject.php',
-        'Acme\\OutputMessage' => __DIR__ . '/../..' . '/src/OutputMessage.php',
-        'Acme\\RestoreProject' => __DIR__ . '/../..' . '/src/RestoreProject.php',
-        'Acme\\RunningTimers' => __DIR__ . '/../..' . '/src/RunningTimers.php',
-        'Acme\\Session' => __DIR__ . '/../..' . '/src/Session.php',
-        'Acme\\ShowDates' => __DIR__ . '/../..' . '/src/ShowDates.php',
-        'Acme\\ShowDay' => __DIR__ . '/../..' . '/src/ShowDay.php',
-        'Acme\\ShowProjects' => __DIR__ . '/../..' . '/src/ShowProjects.php',
-        'Acme\\ShowTimes' => __DIR__ . '/../..' . '/src/ShowTimes.php',
-        'Acme\\ShowWeek' => __DIR__ . '/../..' . '/src/ShowWeek.php',
-        'Acme\\StartProject' => __DIR__ . '/../..' . '/src/StartProject.php',
-        'Acme\\StopProject' => __DIR__ . '/../..' . '/src/StopProject.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+        'Cltt\\AddComment' => __DIR__ . '/../..' . '/src/AddComment.php',
+        'Cltt\\AddTime' => __DIR__ . '/../..' . '/src/AddTime.php',
+        'Cltt\\ArchiveProject' => __DIR__ . '/../..' . '/src/ArchiveProject.php',
+        'Cltt\\CalculateTime' => __DIR__ . '/../..' . '/src/CalculateTime.php',
+        'Cltt\\Command' => __DIR__ . '/../..' . '/src/Command.php',
+        'Cltt\\CsvResponse' => __DIR__ . '/../..' . '/src/CsvResponse.php',
+        'Cltt\\DatabaseAdapter' => __DIR__ . '/../..' . '/src/DatabaseAdapter.php',
+        'Cltt\\DaysOfWeek' => __DIR__ . '/../..' . '/src/DaysOfWeek.php',
+        'Cltt\\DeleteTime' => __DIR__ . '/../..' . '/src/DeleteTime.php',
+        'Cltt\\EditTime' => __DIR__ . '/../..' . '/src/EditTime.php',
+        'Cltt\\ExportEntries' => __DIR__ . '/../..' . '/src/ExportEntries.php',
+        'Cltt\\FormatTime' => __DIR__ . '/../..' . '/src/FormatTime.php',
+        'Cltt\\NewProject' => __DIR__ . '/../..' . '/src/NewProject.php',
+        'Cltt\\OutputMessage' => __DIR__ . '/../..' . '/src/OutputMessage.php',
+        'Cltt\\RestoreProject' => __DIR__ . '/../..' . '/src/RestoreProject.php',
+        'Cltt\\RunningTimers' => __DIR__ . '/../..' . '/src/RunningTimers.php',
+        'Cltt\\Session' => __DIR__ . '/../..' . '/src/Session.php',
+        'Cltt\\ShowDates' => __DIR__ . '/../..' . '/src/ShowDates.php',
+        'Cltt\\ShowDay' => __DIR__ . '/../..' . '/src/ShowDay.php',
+        'Cltt\\ShowProjects' => __DIR__ . '/../..' . '/src/ShowProjects.php',
+        'Cltt\\ShowTimes' => __DIR__ . '/../..' . '/src/ShowTimes.php',
+        'Cltt\\ShowWeek' => __DIR__ . '/../..' . '/src/ShowWeek.php',
+        'Cltt\\StartProject' => __DIR__ . '/../..' . '/src/StartProject.php',
+        'Cltt\\StopProject' => __DIR__ . '/../..' . '/src/StopProject.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
         'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/Psr/Log/LogLevel.php',

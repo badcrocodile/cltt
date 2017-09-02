@@ -1,7 +1,7 @@
 <?php
-namespace Acme;
+namespace Cltt;
 
-use Acme\CsvResponse;
+use Cltt\CsvResponse;
 
 $response = new CsvResponse( $data, 200, explode( ', ', $columns ) );
 $response->setFilename( "data.csv" );

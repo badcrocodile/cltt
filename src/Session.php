@@ -1,4 +1,4 @@
-<?php namespace Acme;
+<?php namespace Cltt;
 
 
 class Session {

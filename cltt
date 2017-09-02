@@ -47,22 +47,22 @@ catch(Exception $exception)
     exit(1);
 }
 
-$dbAdapter = new Acme\DatabaseAdapter($pdo);
+$dbAdapter = new Cltt\DatabaseAdapter($pdo);
 
-$app->add(new Acme\AddComment($dbAdapter));
-$app->add(new Acme\AddTime($dbAdapter));
-$app->add(new Acme\NewProject($dbAdapter));
-$app->add(new Acme\ArchiveProject($dbAdapter));
-$app->add(new Acme\RestoreProject($dbAdapter));
-$app->add(new Acme\EditTime($dbAdapter));
-$app->add(new Acme\DeleteTime($dbAdapter));
-$app->add(new Acme\ExportEntries($dbAdapter));
-$app->add(new Acme\RunningTimers($dbAdapter));
-$app->add(new Acme\ShowDay($dbAdapter));
-$app->add(new Acme\ShowProjects($dbAdapter));
-$app->add(new Acme\ShowTimes($dbAdapter));
-$app->add(new Acme\ShowWeek($dbAdapter));
-$app->add(new Acme\StartProject($dbAdapter));
-$app->add(new Acme\StopProject($dbAdapter));
+$app->add(new Cltt\AddComment($dbAdapter));
+$app->add(new Cltt\AddTime($dbAdapter));
+$app->add(new Cltt\NewProject($dbAdapter));
+$app->add(new Cltt\ArchiveProject($dbAdapter));
+$app->add(new Cltt\RestoreProject($dbAdapter));
+$app->add(new Cltt\EditTime($dbAdapter));
+$app->add(new Cltt\DeleteTime($dbAdapter));
+$app->add(new Cltt\ExportEntries($dbAdapter));
+$app->add(new Cltt\RunningTimers($dbAdapter));
+$app->add(new Cltt\ShowDay($dbAdapter));
+$app->add(new Cltt\ShowProjects($dbAdapter));
+$app->add(new Cltt\ShowTimes($dbAdapter));
+$app->add(new Cltt\ShowWeek($dbAdapter));
+$app->add(new Cltt\StartProject($dbAdapter));
+$app->add(new Cltt\StopProject($dbAdapter));
 
 $app->run();

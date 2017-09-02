@@ -1,4 +1,4 @@
-<?php namespace Acme;
+<?php namespace Cltt;
 
 
 use Symfony\Component\Console\Input\InputInterface;

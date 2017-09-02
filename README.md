@@ -6,7 +6,7 @@
 A simple php command line utility to help you keep track of the shit you do all day.
 
 ### Highlights
-* Create unlimited projects: `cltt add "Acme Widgets"`
+* Create unlimited projects: `cltt add "Cltt Widgets"`
 * Start tracking time: `cltt start`
 * Forget to start a timer? No problem: `cltt start [project ID] "45 minutes ago"`
 * Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
