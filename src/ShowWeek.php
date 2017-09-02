@@ -43,7 +43,6 @@ class ShowWeek extends ShowDates {
 
         // Get all comments attached to those sessions
         $comments = $this->database->fetchCommentsByDate($date_week_start, $date_week_end);
-        var_dump($comments);
 
         $session = new Session($sessions);
 

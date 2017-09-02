@@ -122,7 +122,6 @@ class ExportEntries extends Command {
         $date_week_start = (new Carbon($date_week))->startOfWeek()->timestamp;
         $date_week_end = (new Carbon($date_week))->endOfWeek()->timestamp;
         $comments = $this->database->fetchCommentsByDate($date_week_start, $date_week_end);
-//        var_dump($comments);
 
         $comments_out = "";
         $comments_out .= "<table>";
