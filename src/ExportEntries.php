@@ -1,10 +1,6 @@
 <?php namespace Acme;
 
 use Carbon\Carbon;
-//use PHPExcel;
-//use PHPExcel_IOFactory;
-use PHPExcel;
-use PHPExcel_IOFactory;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
