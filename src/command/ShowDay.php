@@ -25,39 +25,62 @@ class ShowDay extends ShowDates {
     }
 
     /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Input\InputInterface   $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param bool                                              $paginated
+     *
      * @return int|null|void
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output, $paginated=false)
     {
-        $day                = $input->getArgument('day');
+        $day               = $input->getArgument('day');
         $date_day          = (isset($day) ? new Carbon($day) : new Carbon());
         $date_day_start    = (new Carbon($date_day))->startOfDay()->timestamp;
         $date_day_end      = (new Carbon($date_day))->endOfDay()->timestamp;
 
-        $sessions = $this->database->selectWhere("
-            SELECT entries.id, project_id, start_time, stop_time, name
-            FROM entries
-            JOIN projects
-            ON entries.project_id = projects.id
-            WHERE stop_time 
-            BETWEEN $date_day_start AND $date_day_end
-            OR stop_time is NULL
-        ");
+        if($paginated) {
+            $sessions = $this->database->selectWhere("
+                SELECT entries.id, project_id, start_time, stop_time, name
+                FROM entries
+                JOIN projects
+                ON entries.project_id = projects.id
+                WHERE stop_time 
+                BETWEEN $date_day_start AND $date_day_end
+            ");
 
-        $comments = $this->database->selectWhere("
-            SELECT comments.comment, entries.id, projects.name
-            FROM comments
-            LEFT JOIN entries
-            ON entries.id = comments.entry_id
-            LEFT JOIN projects
-            ON entries.project_id = projects.id 
-            WHERE stop_time 
-            BETWEEN $date_day_start AND $date_day_end
-            OR stop_time IS NULL
-        ");
+            $comments = $this->database->selectWhere("
+                SELECT comments.comment, entries.id, projects.name
+                FROM comments
+                LEFT JOIN entries
+                ON entries.id = comments.entry_id
+                LEFT JOIN projects
+                ON entries.project_id = projects.id 
+                WHERE entries.stop_time 
+                BETWEEN $date_day_start AND $date_day_end
+            ");
+        } else {
+            $sessions = $this->database->selectWhere("
+                SELECT entries.id, project_id, start_time, stop_time, name
+                FROM entries
+                JOIN projects
+                ON entries.project_id = projects.id
+                WHERE entries.stop_time 
+                BETWEEN $date_day_start AND $date_day_end
+                OR entries.stop_time is NULL
+            ");
 
+            $comments = $this->database->selectWhere("
+                SELECT comments.comment, entries.id, projects.name
+                FROM comments
+                LEFT JOIN entries
+                ON entries.id = comments.entry_id
+                LEFT JOIN projects
+                ON entries.project_id = projects.id 
+                WHERE entries.stop_time 
+                BETWEEN $date_day_start AND $date_day_end
+                OR entries.stop_time IS NULL
+            ");
+        }
 
         $session = new Session($sessions);
 
@@ -103,11 +126,11 @@ class ShowDay extends ShowDates {
      *
      * @param \Symfony\Component\Console\Input\InputInterface   $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @param                                                   $starting_day
+     * @param Carbon                                            $starting_day
      *
      * @internal param $starting_week
      */
-    public function paginate(InputInterface $input, OutputInterface $output, $starting_day) {
+    public function paginate(InputInterface $input, OutputInterface $output, carbon $starting_day) {
         $current_day = $starting_day;
 
         $helper = $this->getHelper('question');
@@ -121,11 +144,11 @@ class ShowDay extends ShowDates {
         switch ($paginate) {
             case "n":
                 $input->setArgument('day', $current_day->addDay());
-                $this->execute($input, $output);
+                $this->execute($input, $output, $paginated = true);
                 break;
             case "p":
                 $input->setArgument('day', $current_day->subDay());
-                $this->execute($input, $output);
+                $this->execute($input, $output, $paginated = true);
                 break;
             case "a":
                 return;
