@@ -85,7 +85,8 @@ class CalculateTime {
     /**
      * Calculates the total time (in seconds) spent on a project
      *
-     * @param $timesArray
+     * @param      $timesArray
+     * @param bool $sort_by_project
      *
      * @return int
      */

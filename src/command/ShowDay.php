@@ -38,48 +38,18 @@ class ShowDay extends ShowDates {
         $date_day_start    = (new Carbon($date_day))->startOfDay()->timestamp;
         $date_day_end      = (new Carbon($date_day))->endOfDay()->timestamp;
 
-        if($paginated) {
-            $sessions = $this->database->selectWhere("
-                SELECT entries.id, project_id, start_time, stop_time, name
-                FROM entries
-                JOIN projects
-                ON entries.project_id = projects.id
-                WHERE stop_time 
-                BETWEEN $date_day_start AND $date_day_end
-            ");
+        if($paginated) { // Display a paginated result - do not include running timers
+            // Get all sessions during day
+            $sessions = $this->database->fetchSessionsByDate($date_day_start, $date_day_end);
 
-            $comments = $this->database->selectWhere("
-                SELECT comments.comment, entries.id, projects.name
-                FROM comments
-                LEFT JOIN entries
-                ON entries.id = comments.entry_id
-                LEFT JOIN projects
-                ON entries.project_id = projects.id 
-                WHERE entries.stop_time 
-                BETWEEN $date_day_start AND $date_day_end
-            ");
+            // Get all comments attached to those sessions
+            $comments = $this->database->fetchCommentsByDate($date_day_start, $date_day_end);
         } else {
-            $sessions = $this->database->selectWhere("
-                SELECT entries.id, project_id, start_time, stop_time, name
-                FROM entries
-                JOIN projects
-                ON entries.project_id = projects.id
-                WHERE entries.stop_time 
-                BETWEEN $date_day_start AND $date_day_end
-                OR entries.stop_time is NULL
-            ");
+            // Get all sessions during day
+            $sessions = $this->database->fetchSessionsByDate($date_day_start, $date_day_end, true);
 
-            $comments = $this->database->selectWhere("
-                SELECT comments.comment, entries.id, projects.name
-                FROM comments
-                LEFT JOIN entries
-                ON entries.id = comments.entry_id
-                LEFT JOIN projects
-                ON entries.project_id = projects.id 
-                WHERE entries.stop_time 
-                BETWEEN $date_day_start AND $date_day_end
-                OR entries.stop_time IS NULL
-            ");
+            // Get all comments attached to those sessions
+            $comments = $this->database->fetchCommentsByDate($date_day_start, $date_day_end, true);
         }
 
         $session = new Session($sessions);
