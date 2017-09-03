@@ -2,11 +2,17 @@
 
 **C**ommand **L**ine **T**ime **T**racker.
 
+**What am I working on?**
 ![cltt introduction 1](http://coolguy.org/screengrab/intro-1.gif)
 
+**What have I done today?**
 ![cltt introduction 2](http://coolguy.org/screengrab/intro-2.gif)
 
+**What did I do yesterday?**
 ![cltt introduction 3](http://coolguy.org/screengrab/intro-3.gif)
+
+**What did I do last week?**
+![cltt introduction 4](http://coolguy.org/screengrab/intro-4-web.gif)
 
 ### What is it?
 A simple cli utility for keeping track of all the shit you do during your day.
