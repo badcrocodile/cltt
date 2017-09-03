@@ -2,7 +2,8 @@
 
 **C**ommand **L**ine **T**ime **T**racker.
 
-![cltt status](http://coolguy.org/screengrab/cltt-overview.mp4)
+![cltt introduction 1](http://coolguy.org/screengrab/cltt-overview1.gif)
+![cltt introduction 2](http://coolguy.org/screengrab/cltt-overview-2a-2.gif)
 
 ### What is it?
 A simple cli utility for keeping track of all the shit you do during your day.
