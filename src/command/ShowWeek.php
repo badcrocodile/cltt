@@ -2,6 +2,7 @@
 
 
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +18,8 @@ class ShowWeek extends ShowDates {
     {
         $this->setName('week')
              ->setDescription('Display times logged during a specific week.')
-             ->addArgument('week', InputArgument::OPTIONAL);
+             ->addArgument('week', InputArgument::OPTIONAL)
+             ->addOption('comments', 'c', InputOption::VALUE_NONE, 'Display week with comments');
     }
 
     /**
@@ -66,7 +68,7 @@ class ShowWeek extends ShowDates {
         $table_header_message = (new OutputMessage((new Carbon($date_week))->startOfWeek()->toFormattedDateString() . " - " . (new Carbon($date_week))->endOfWeek()->toFormattedDateString()))->asComment();
 
         $table_headers[] = [new TableCell($table_header_message, ['colspan' => 6])];
-        $table_headers[] = ['ID', 'Project', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
+        $table_headers[] = ['Date', 'ID', 'Project', 'Start', 'Stop', 'Total'];
 
         $table_rows   = $session->getSessionTimesWithProjectName();
         $table_rows[] = new TableSeparator();
@@ -81,11 +83,13 @@ class ShowWeek extends ShowDates {
         // TODO: Make sure all formatting of dates uses FormatTime class instead of using Carbon
         $x = 0;
         foreach($comments as $comment) {
-            $comments[$x]['timestamp'] = (new Carbon($comment['timestamp']))->format('D, M dS, Y');
+            $comments[$x]['timestamp'] = (new Carbon($comment['timestamp']))->format('D M d');
             $x++;
         }
 
-        $comments_table->setHeaders($comments_table_headers)->setRows($comments)->render();
+        if($input->getOption('comments')) {
+            $comments_table->setHeaders($comments_table_headers)->setRows($comments)->render();
+        }
 
         $this->paginate($input, $output, $date_week);
     }
