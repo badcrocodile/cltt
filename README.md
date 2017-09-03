@@ -2,6 +2,9 @@
 
 **C**ommand **L**ine **T**ime **T**racker.
 
+![cltt status](http://coolguy.org/screengrab/cltt-overview1.gif)
+
+
 ![cltt status](http://coolguy.org/screengrab/status2.gif)
 
 ### What is it?
