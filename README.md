@@ -2,7 +2,8 @@
 
 **C**ommand **L**ine **T**ime **T**racker.
 
-![cltt introduction 1](http://coolguy.org/screengrab/cltt-overview1.gif)
+![cltt introduction 1](http://coolguy.org/screengrab/cltt-overview-1.gif)
+
 ![cltt introduction 2](http://coolguy.org/screengrab/cltt-overview-2a-2.gif)
 
 ### What is it?
