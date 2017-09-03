@@ -6,6 +6,8 @@
 
 ![cltt introduction 2](http://coolguy.org/screengrab/intro-2.gif)
 
+![cltt introduction 3](http://coolguy.org/screengrab/intro-3.gif)
+
 ### What is it?
 A simple cli utility for keeping track of all the shit you do during your day.
 
