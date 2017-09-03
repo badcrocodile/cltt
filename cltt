@@ -6,7 +6,7 @@ use Symfony\Component\Console\Application;
 
 require 'vendor/autoload.php';
 
-$app = new Application('Project App', '1.0');
+$app = new Application('Cltt', '1.0');
 
 try {
     $pdo = new PDO('sqlite:' . dirname(__FILE__) . '/db.sqlite') or die("Can't open the database Captain.");
