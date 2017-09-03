@@ -2,10 +2,13 @@
 
 **C**ommand **L**ine **T**ime **T**racker.
 
+**What am I working on?**
 ![cltt introduction 1](http://coolguy.org/screengrab/intro-1.gif)
 
+**What have I done today?**
 ![cltt introduction 2](http://coolguy.org/screengrab/intro-2.gif)
 
+**What did I do yesterday?**
 ![cltt introduction 3](http://coolguy.org/screengrab/intro-3.gif)
 
 ### What is it?
