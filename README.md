@@ -11,8 +11,8 @@
 **What did I do yesterday?**
 ![cltt introduction 3](http://coolguy.org/screengrab/intro-3.gif)
 
-** What did I do last week?**
-![cltt introduction 3](http://coolguy.org/screengrab/week-2.gif)
+**What did I do last week?**
+![cltt introduction 4](http://coolguy.org/screengrab/intro-4-optimized.gif)
 
 ### What is it?
 A simple cli utility for keeping track of all the shit you do during your day.
