@@ -148,7 +148,7 @@ class DatabaseAdapter {
      *
      * @param      $date_start
      * @param      $date_end
-     * @param bool $running Include currently running timers
+     * @param bool $currently_running Include currently running timers
      *
      * @return array
      */
