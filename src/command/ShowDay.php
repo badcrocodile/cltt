@@ -6,6 +6,7 @@ use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Carbon\Carbon;
@@ -17,7 +18,8 @@ class ShowDay extends ShowDates {
         // TODO: Day command should not output Date as part of the table it's redundant
         $this->setName('day')
             ->setDescription('Display times logged during a specific day.')
-            ->addArgument('day', InputArgument::OPTIONAL);
+            ->addArgument('day', InputArgument::OPTIONAL)
+            ->addOption('comments', 'c', InputOption::VALUE_NONE);
     }
 
     /**
@@ -60,7 +62,7 @@ class ShowDay extends ShowDates {
         $table_header_message = (new OutputMessage((new Carbon($date_day))->startOfDay()->toFormattedDateString()))->asComment();
 
         $table_headers[] = [new TableCell($table_header_message, ['colspan' => 6])];
-        $table_headers[] = ['ID', 'Project', 'Date', 'Start Time', 'Stop Time', 'Session Length'];
+        $table_headers[] = ['Date', 'ID', 'Project', 'Start', 'Stop', 'Total'];
 
         $table_rows   = $session->getSessionTimesWithProjectName();
         $table_rows[] = new TableSeparator();
@@ -83,7 +85,9 @@ class ShowDay extends ShowDates {
         $comments_table_headers[] = ['ID', 'Project', 'Comment'];
         $comments_table_rows = $comments_table;
 
-        $comments_table->setHeaders($comments_table_headers)->setRows($comment_array)->render();
+        if($input->getOption('comments')) {
+            $comments_table->setHeaders($comments_table_headers)->setRows($comment_array)->render();
+        }
 
         $this->paginate($input, $output, $date_day);
     }
