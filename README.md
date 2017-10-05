@@ -2,6 +2,18 @@
 
 **C**ommand **L**ine **T**ime **T**racker.
 
+**What am I working on?**
+![cltt introduction 1](http://coolguy.org/screengrab/intro-1.gif)
+
+**What have I done today?**
+![cltt introduction 2](http://coolguy.org/screengrab/intro-2.gif)
+
+**What did I do yesterday?**
+![cltt introduction 3](http://coolguy.org/screengrab/intro-3.gif)
+
+**What did I do last week?**
+![cltt introduction 4](http://coolguy.org/screengrab/intro-4-web.gif)
+
 ### What is it?
 A simple cli utility for keeping track of all the shit you do during your day.
 
@@ -15,12 +27,10 @@ It has a number of tools for browsing through your days and weeks, and you can e
 
 #### Basic usage:
 * Create a project: `cltt add "Cltt Widgets"`
-* Start a timer: `cltt start`
-* Forget to start a timer? No problem: `cltt start [project ID] "45 minutes ago"`
+* Start a timer: `cltt start "Cltt Widgets"` or just `cltt start` and follow the prompts
 * Add some comments to the timer you are working on: `cltt comment "Working on feature A"`
 * Stop a timer: `cltt stop`
-* Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
-* Forget to log some times yesterday (or even last week)? Add new time entries on the fly `cltt add-time` and follow the prompts
+* Review all your hard work: `cltt day` or `cltt week`
 
 #### Browsing:
 ##### What have I done today (or X days ago)?
@@ -40,6 +50,9 @@ It has a number of tools for browsing through your days and weeks, and you can e
 * Export timesheet for X weeks ago: `cltt export "last week"` 
 
 ##### Other stuff you can do
+* Forget to start a timer? No problem: `cltt start [project ID] "45 minutes ago"`
+* Forget to stop a timer? No problem: `cltt stop "2 hours ago"`
+* Forget to log some times yesterday (or even last week)? Add new time entries on the fly `cltt add-time` and follow the prompts
 * Display all available commands: `cltt list`
 * Get help on a specific command: `cltt help add-time`
 * Show all times logged for a specific project: `cltt times`
