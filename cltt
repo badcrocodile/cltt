@@ -2,9 +2,10 @@
 
 <?php
 
-use Symfony\Component\Console\Application;
 
-require 'vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
 
 $app = new Application('Cltt', '1.0');
 
