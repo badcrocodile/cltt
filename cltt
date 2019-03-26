@@ -16,7 +16,8 @@ try {
     $pdo->exec(
         "CREATE TABLE IF NOT EXISTS projects(
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            name TEXT
+            name TEXT,
+            archived TEXT
         )"
     );
     $pdo->exec(
